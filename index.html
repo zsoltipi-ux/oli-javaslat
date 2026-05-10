@@ -683,17 +683,67 @@ footer.doc-foot a{color:var(--accent)}
       </details>
 
       <details>
-        <summary>Költség-modell — 3 opció a próba után</summary>
+        <summary>Tech-stack komponensenként — mit, miért, mennyiért <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
         <div class="body">
+          <p>Minden komponens, ami a #1 eszközhöz kell, a havi futási költségével:</p>
           <table class="tbl">
-            <thead><tr><th>Opció</th><th>Ár</th><th>Mikor választod</th></tr></thead>
+            <thead><tr><th>Komponens</th><th>Mire</th><th>Költség</th></tr></thead>
             <tbody>
-              <tr><td><strong>A · Egyszeri</strong></td><td class="num">80 e Ft, 0 havi</td><td>„Beállítom magamnak, kódot megkapom"</td></tr>
-              <tr><td><strong>B · Havi all-in</strong></td><td class="num">6 e Ft / hó</td><td>„Csináld te, ne foglalkozzak"</td></tr>
-              <tr><td><strong>C · Üzlettárs csere</strong></td><td class="num">0 Ft + chip</td><td>SS-en belül viszonzom — nincs új pénzmozgás</td></tr>
+              <tr><td><code>Vercel Hobby</code></td><td>cron + serverless</td><td class="num">0 USD/hó</td></tr>
+              <tr><td><code>Upstash Redis Free</code></td><td>state + last-check cache</td><td class="num">0 USD · 10K cmd/nap</td></tr>
+              <tr><td><code>Resend Free</code></td><td>heti e-mail küldés</td><td class="num">0 USD · 3K mail/hó</td></tr>
+              <tr><td><code>whois-json</code></td><td>domain lejárat</td><td class="num">0 · npm/MIT</td></tr>
+              <tr><td><code>ssl-checker</code></td><td>SSL valid + maradék napok</td><td class="num">0 · npm/MIT</td></tr>
+              <tr><td><code>axios</code></td><td>provider API hívások</td><td class="num">0 · npm/MIT</td></tr>
+              <tr><td>Hetzner / OVH API-k</td><td>VPS uptime + számla</td><td class="num">0 · saját accountokon</td></tr>
+              <tr><td>GitHub privát repo</td><td>kód-tárolás</td><td class="num">0 · Free / Pro acc OK</td></tr>
+              <tr><td>Domain (oli-hosting.fly.dev)</td><td>dashboard URL</td><td class="num">0 · subdomain</td></tr>
+              <tr><td>TLS/SSL</td><td>Vercel auto-managed</td><td class="num">0</td></tr>
             </tbody>
           </table>
-          <p>Default: <strong>C</strong>. Üzlettárs vagy, nem ügyfél.</p>
+          <p style="margin-top:8px"><strong>Összes nettó futási költség: ~0 USD/hó.</strong> Ha bármi váratlanul fizetős tier-be lép (pl. 100k+ ügyfél), előre szólok és újratárgyaljuk.</p>
+          <p><span class="lbl">alternatívák, amiket elvetettem</span></p>
+          <ul>
+            <li><strong>AWS Lambda + DynamoDB</strong> — ugyanez ~5 USD/hó + bonyolultabb beüzemelés. Nem éri meg.</li>
+            <li><strong>Cloudflare Workers</strong> — 0 USD, de cron-erőforrás limit szigorúbb. Skálázásnál mehet erre.</li>
+            <li><strong>StatusCake / Better Stack (kész SaaS)</strong> — 10-30 USD/hó, de SSL/WHOIS deep-monitoring nincs, és nem testreszabható az adminhoz.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Önköltség Te oldalon vs. én oldalon <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
+        <div class="body">
+          <table class="tbl">
+            <tr><td class="label">build idő · én</td><td>7-10 óra</td></tr>
+            <tr><td class="label">piaci óra-ár (HU senior backend)</td><td>~10 e Ft / óra</td></tr>
+            <tr><td class="label">munkaérték</td><td>70-100 e Ft</td></tr>
+            <tr><td class="label">próba (2 hét) · te</td><td>0 Ft</td></tr>
+            <tr><td class="label">próba (2 hét) · én</td><td>0 nyereség, ~10 óra build-óra-kockázat</td></tr>
+          </table>
+          <p style="margin-top:8px">A próba után 3 opció — mindenhol kiírom mit fizetsz <strong>te</strong> és mit kapok <strong>én</strong>:</p>
+          <table class="tbl">
+            <thead><tr><th>Opció</th><th>Te oldal</th><th>Én oldal</th></tr></thead>
+            <tbody>
+              <tr><td><strong>A · Egyszeri</strong></td><td class="num">80 e Ft · 0 havi</td><td class="num">~önköltség / break-even</td></tr>
+              <tr><td><strong>B · Havi all-in</strong></td><td class="num">6 e Ft / hó</td><td class="num">~14 hó után megtérül, utána passzív</td></tr>
+              <tr><td><strong>C · Üzlettárs csere</strong></td><td class="num">0 Ft</td><td class="num">0 Ft, SS-szinergia (lásd lent)</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Default: C.</strong> Üzlettárs vagy, nem ügyfél. <em>Pénzt akkor kérek</em>, ha a build másnak is eladható (lásd szinergia panel) — nem belőled.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Szinergia — ahol nyereség lehet, és kinek <span class="chip accent" style="margin-left:auto">win-win</span></summary>
+        <div class="body">
+          <p>A Hosting-pásztor 70%-ban másnak is feltehető — más portfolio-investornak / multi-business owner-nek aki 5+ saját VPS-t / domain-t kezel. Ezért megéri nekem akkor is építeni, ha tőled 0 Ft jön. A nyereség itt jöhet:</p>
+          <ul>
+            <li><strong>Másoknak eladva később</strong> — 3-5 más ügyfél, havi 8-15 e Ft/ügyfél áron. Te a referencia (ha vállalod).</li>
+            <li><strong>SmileStone-on visszaforog</strong> — az SS hosting-felügyeletét is innen futtatjuk, megspórolja <em>Pepe</em> óráit. Ez a co-founder szinergia.</li>
+            <li><strong>Tier 1 + Tier 2 sales esélyét nyitja</strong> — ha a #1 jól megy, a #2 / #3-nál már bizalom-státuszban beszélünk.</li>
+          </ul>
+          <p>Ezért: <strong>nem keresek rajtad közvetlenül</strong>, csak ott ahol valódi közös win van — és azt is előre megnevezzük (§9).</p>
         </div>
       </details>
 
@@ -774,15 +824,40 @@ footer.doc-foot a{color:var(--accent)}
       </details>
 
       <details>
-        <summary>Költség-modell — 3 opció</summary>
+        <summary>Tech-stack + nettó futási költség <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
         <div class="body">
           <table class="tbl">
+            <thead><tr><th>Komponens</th><th>Mire</th><th>Költség</th></tr></thead>
             <tbody>
-              <tr><td><strong>A · Setup + havi</strong></td><td class="num">90 e + 12 e/hó</td><td>default — fair óra-ár</td></tr>
-              <tr><td><strong>B · Havi all-in</strong></td><td class="num">18 e/hó · no setup</td><td>havidíj-allergia esetén</td></tr>
-              <tr><td><strong>C · Egyszeri</strong></td><td class="num">140 e · 0 havi</td><td>magát karbantartja, te kapod a kódot</td></tr>
+              <tr><td><code>Vercel Hobby</code></td><td>Next.js dashboard + cron</td><td class="num">0 USD/hó</td></tr>
+              <tr><td><code>Neon Postgres Free</code></td><td>9 cég adat-tárolás</td><td class="num">0 USD · 0.5 GB</td></tr>
+              <tr><td><code>Resend Free</code></td><td>hétfő reggeli e-mail</td><td class="num">0 USD · 3K mail/hó</td></tr>
+              <tr><td><code>Recharts</code></td><td>sparkline / chart</td><td class="num">0 · npm/MIT</td></tr>
+              <tr><td>számlazz.hu API</td><td>cégenként key (te-oldali)</td><td class="num">0 — előfizetésed él</td></tr>
+              <tr><td>bank-feed</td><td>CSV upload v1; API v2</td><td class="num">0 (CSV) · API tárgyalt</td></tr>
+              <tr><td>KSH API</td><td>iparági benchmark</td><td class="num">0 · public</td></tr>
             </tbody>
           </table>
+          <p style="margin-top:8px"><strong>Nettó futási költség: ~0 USD/hó kis volumenen</strong> (~3-5 e Ft/hó ha a Postgres compute-óra elfogy, ami 9 cég volumenén nem várható).</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Önköltség Te oldalon vs. én oldalon <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
+        <div class="body">
+          <table class="tbl">
+            <tr><td class="label">build idő · én</td><td>12-15 óra</td></tr>
+            <tr><td class="label">munkaérték (~10 e/óra)</td><td>120-150 e Ft</td></tr>
+          </table>
+          <table class="tbl" style="margin-top:8px">
+            <thead><tr><th>Opció</th><th>Te oldal</th><th>Én oldal</th></tr></thead>
+            <tbody>
+              <tr><td><strong>A · Setup + havi</strong></td><td class="num">90 e + 12 e/hó</td><td class="num">~fair óra-ár, 4-6 hó után megtérül + havi maintenance</td></tr>
+              <tr><td><strong>B · Havi all-in</strong></td><td class="num">18 e/hó · no setup</td><td class="num">~10-12 hó után jön ki, hosszabb kommitment</td></tr>
+              <tr><td><strong>C · Egyszeri kód-átadás</strong></td><td class="num">140 e · 0 havi</td><td class="num">~óra-fair, no maintenance</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:8px"><span class="lbl">szinergia</span> A #2 másoknak is eladható (HU-ban ~50-100 multi-business owner mint te). A te bevezetésed = case-study, ezért tudok korrekt árat adni.</p>
         </div>
       </details>
 
@@ -844,16 +919,42 @@ footer.doc-foot a{color:var(--accent)}
       </details>
 
       <details>
-        <summary>Költség-modell — 3 opció</summary>
+        <summary>Tech-stack + nettó futási költség <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
         <div class="body">
           <table class="tbl">
+            <thead><tr><th>Komponens</th><th>Mire</th><th>Költség</th></tr></thead>
             <tbody>
-              <tr><td><strong>A · Setup + havi</strong></td><td class="num">280 e + 8 e/hó</td><td>Te is bele teszel, megosztott risk</td></tr>
-              <tr><td><strong>B · Rev-share</strong></td><td class="num">0 setup + 15% MRR / 12 hó</td><td>0 cash up-front, 12 hónap törlesztés</td></tr>
-              <tr><td><strong>C · JV</strong></td><td class="num">új cég · 60/40 vagy 70/30</td><td>partnerkedés, hosszú táv</td></tr>
+              <tr><td><code>Vercel Pro</code> (vagy Hobby)</td><td>Next.js + serverless</td><td class="num">0-20 USD/hó</td></tr>
+              <tr><td><code>Neon Postgres</code></td><td>ügyfél + kampány adatok</td><td class="num">0-19 USD · volume függő</td></tr>
+              <tr><td><code>Stripe / Barion</code></td><td>fizetés-feldolgozás</td><td class="num">1.4-2.9% / tranzakció · az ügyfél fizeti</td></tr>
+              <tr><td><code>Inngest Free</code></td><td>long-running pipeline</td><td class="num">0 · 50K event/hó</td></tr>
+              <tr><td><code>Clerk Free</code></td><td>auth + ügyfél-account</td><td class="num">0 · 5K MAU</td></tr>
+              <tr><td><code>Resend Free</code></td><td>tranzakciós e-mail</td><td class="num">0 · 3K mail/hó</td></tr>
+              <tr><td>LinkedIn proxy-pool</td><td>scrape (ha kell)</td><td class="num">3-5 USD/hó</td></tr>
+              <tr><td>Új domain (.hu)</td><td>brand-URL</td><td class="num">3-5 e Ft / év</td></tr>
             </tbody>
           </table>
-          <p>Default: <strong>B vagy C</strong>. Te üzlettárs vagy, nem ügyfél.</p>
+          <p style="margin-top:8px"><strong>Nettó futási költség: ~5-15 e Ft/hó kis volumenen</strong>, skálázódik forgalommal. A Stripe/Barion fee az ügyfél felé, nem te oldalon.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Önköltség Te oldalon vs. én oldalon <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
+        <div class="body">
+          <table class="tbl">
+            <tr><td class="label">build idő · én</td><td>30-50 óra</td></tr>
+            <tr><td class="label">munkaérték (~10 e/óra)</td><td>300-500 e Ft</td></tr>
+          </table>
+          <table class="tbl" style="margin-top:8px">
+            <thead><tr><th>Opció</th><th>Te oldal</th><th>Én oldal</th></tr></thead>
+            <tbody>
+              <tr><td><strong>A · Setup + havi</strong></td><td class="num">280 e + 8 e/hó</td><td class="num">megosztott risk · te beszállsz az építésbe</td></tr>
+              <tr><td><strong>B · Rev-share</strong></td><td class="num">0 cash up-front</td><td class="num">15% MRR · 12 hó · csak ha működik</td></tr>
+              <tr><td><strong>C · JV (új cég)</strong></td><td class="num">0 cash · idő-befektetés</td><td class="num">60/40 vagy 70/30 partnerkedés</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:8px"><strong>Default: B vagy C.</strong> A #3 az egyetlen, ahol valódi upside lehet — és <em>csak akkor jön nekem bevétel, ha tényleg jön az ügyfél</em>. Setup-fee nélkül vállalom a build-óra kockázatát.</p>
+          <p><span class="lbl">szinergia</span> Ha a Wellness Self-Serve elindul, a templét másra (fitness, dental, beauty, B2B-leadgen-vertikálok) is felmegy white-label-ben. Hosszú-táv 1-3 M HUF/hó passzív bevétel köztünk osztva.</p>
         </div>
       </details>
 
@@ -959,9 +1060,49 @@ footer.doc-foot a{color:var(--accent)}
   </table>
 </section>
 
+<!-- TRANSZPARENCIA -->
+<section>
+  <div class="s-num">§ 9 · Transzparencia</div>
+  <div class="s-title">Mit keresek ezen <small>őszintén</small></div>
+  <p class="s-sub">Üzlettárs vagy a SmileStone-on, az alapja minden bizalom. Ezért: <strong>nem akarok rajtad keresni közvetlenül</strong>. Csak ott kérek pénzt, ahol valódi közös win van — és azt is előre megnevezem.</p>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>Eszköz</th>
+        <th>Mit keresek én</th>
+        <th>Hol jön a nyereség</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>#1 Hosting</strong></td>
+        <td class="num">~Break-even / 0 nyereség</td>
+        <td>SS-szinergia (Pepe órái) + másoknak skálázható case-study után</td>
+      </tr>
+      <tr>
+        <td><strong>#2 Cégeid 1 képben</strong></td>
+        <td class="num">~óra-fair · 90k+12k</td>
+        <td>Másoknak skálázható (multi-business owner mint Te ~50-100 HU-ban)</td>
+      </tr>
+      <tr>
+        <td><strong>#3 Wellness</strong></td>
+        <td class="num">15% rev-share <em>csak ha működik</em></td>
+        <td>Te + én osztozunk a passzív bevételen — 0 setup-fee, ha nem jön be</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:14px;font-size:14.5px;line-height:1.6"><strong>Szabály:</strong> ha valami nem működik vagy nem hoz neked vissza idő/pénzt, <em>nem kérek érte semmit</em>. Próba mindig 2 hét, és <strong>én viselem a build-óra kockázatát</strong> — ezért lehet a #1-es ingyenes és a #3-as setup-fee nélküli rev-share.</p>
+
+  <p style="font-size:13.5px;color:var(--text-soft);line-height:1.6;margin-top:10px">
+    A pontos komponens-árakat és önköltség-bontást a <strong>§3 (Hosting) három drilldown-paneljében nyitottam ki teljes mélységben</strong> — Vercel/Resend/Upstash/etc. komponens-szinten, plus a 3 ár-opció Te-vs-én bontásban. A §4 és §5 hasonlóan elérhető. Ha bármi nem világos, kérdezz — nem akarok rejtett számot az ajánlatban tartani.
+  </p>
+</section>
+
 <!-- KÖVETKEZŐ LÉPÉS -->
 <section>
-  <div class="s-num">§ 9 · Következő lépés</div>
+  <div class="s-num">§ 10 · Következő lépés</div>
   <div class="s-title">Ha bármelyik megfog</div>
   <p class="s-sub">Egy mondat elég. „Ok, kezdjünk a Hosting-pásztorral." Vagy „mit gondolsz a 2-esről részletesebben?". Vagy „köszi, most nem aktuális" — az is teljes válasz.</p>
 
