@@ -1100,18 +1100,94 @@ footer.doc-foot a{color:var(--accent)}
   </p>
 </section>
 
-<!-- KÖVETKEZŐ LÉPÉS -->
+<!-- KÖVETKEZŐ LÉPÉSEK -->
 <section>
-  <div class="s-num">§ 10 · Következő lépés</div>
-  <div class="s-title">Ha bármelyik megfog</div>
-  <p class="s-sub">Egy mondat elég. „Ok, kezdjünk a Hosting-pásztorral." Vagy „mit gondolsz a 2-esről részletesebben?". Vagy „köszi, most nem aktuális" — az is teljes válasz.</p>
+  <div class="s-num">§ 10 · Következő lépések</div>
+  <div class="s-title">Konkrét akció-csomagok <small>bármelyik 1 mondatos „ok"-ra indul</small></div>
+  <p class="s-sub">6 opció, mindegyik önálló döntés. Sorrendben ROI-szerint — fent a leggyorsabb hozadékú, lent a legmélyebb commitment. Drill-down: mennyi időt kér, mit nyersz vele, mit teszek én cserébe.</p>
 
-  <p style="margin:14px 0;font-size:15px;line-height:1.65">
-    👉 <strong>Slack DM</strong> — ahogy szoktunk · vagy <a href="mailto:zsoltipi@gmail.com?subject=Oli%20javaslat%20%E2%80%94%20kezdj%C3%BCnk%20az%20%231-re">zsoltipi@gmail.com</a>
-  </p>
+  <details open>
+    <summary><strong>A · Hosting próba indítás</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">30 perc te · 7-10 ó én · 0 Ft · ezen a héten</span></summary>
+    <div class="body">
+      <table class="tbl">
+        <tr><td class="label">mit kérek tőled</td><td>1× ~25 perces űrlap (hangüzenet bőven jó): domain lista, VPS providerek, SSL provider, admin szerepköre, célzott e-mail-cím</td></tr>
+        <tr><td class="label">mit nyersz</td><td><strong>2 hét múlva tudod, hogy az 1 fős hosting-admin reaktív munkája 60-80%-ban kiváltható-e</strong>. Ha igen → konkrét döntés a következő lépésről. Ha nem → az adat is érték.</td></tr>
+        <tr><td class="label">mit teszek én</td><td>Build (7-10 ó) + beüzemelés + 2 hetes monitoring + heti összefoglaló mail</td></tr>
+        <tr><td class="label">indítás</td><td>Hétfő meeting után 24 ó-n belül kapod az űrlapot · 3-5 nap múlva fut az első hajnali skennelés · 1 hét múlva az első heti mail</td></tr>
+        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 30 perc idő · NDA-szintű hozzáférések megosztása (én vault-ban tartom)</td></tr>
+        <tr><td class="label">kockázat én oldal</td><td>~10 ó build-óra, akkor is ha nem folytatjuk</td></tr>
+      </table>
+      <p style="margin-top:8px"><strong>Akció:</strong> egy „A · indítsuk" → kapod az űrlapot.</p>
+    </div>
+  </details>
 
-  <p style="margin:14px 0;font-size:14px;color:var(--text-soft);line-height:1.6">
-    Ha igent mondasz a #1-re, <strong>24 órán belül</strong> kapsz egy 25 perces űrlapot a 30 perces inputhoz. Az első hajnali skennelés <strong>3-5 napon belül</strong> fut, az első heti összefoglaló <strong>a következő hétfőn 06:00-kor</strong> jön.
+  <details>
+    <summary><strong>B · 30 perces #2 brainstorm</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">30 perc te · 30 perc én · 0 Ft · 1-2 hét múlva</span></summary>
+    <div class="body">
+      <table class="tbl">
+        <tr><td class="label">mit kérek tőled</td><td>30 perces session (Slack huddle / Meet / hangüzenet-csere). Csak design-szintű kérdések, nincs technikai mélység.</td></tr>
+        <tr><td class="label">mit nyersz</td><td><strong>Mielőtt 12-15 órát building-be teszünk</strong>, eldöntjük: a 9 céged közül melyiket jeleníti meg, milyen anomáliákat lássál meg, hol jelezzen Salesolo / IThuman / SS adatait, milyen aggregáció kell.</td></tr>
+        <tr><td class="label">mit teszek én</td><td>Session után 1-pages design-doc (te aláírod ha jó) — utána megyünk build-be</td></tr>
+        <tr><td class="label">mire jó ez konkrétan</td><td>Elkerüljük, hogy 4 hét után újra kelljen tervezni. <em>Te megnyered a build-idő 30-40%-át</em> azzal, hogy előre tisztázunk.</td></tr>
+        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 30 perc</td></tr>
+      </table>
+      <p style="margin-top:8px">Akkor érdemes választanod, ha <strong>nem akarsz vakon</strong> belemenni a #2-be, de tetszik az irány.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>C · Régi → új task manager 1× sweep</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">30 perc te · 3-4 ó én · 25 e Ft · 1 hét</span></summary>
+    <div class="body">
+      <table class="tbl">
+        <tr><td class="label">mit kérek tőled</td><td>30 perces dump: CSV-export a régi task manager-ből + 1 listád, hogy mit szeretnél áthúzni / mit kihagyni / mit átformázni</td></tr>
+        <tr><td class="label">mit nyersz</td><td><strong>A „néha nézz be a régibe" feladatod törölhető.</strong> Mentális tehermentesítés. A kettős workflow vége — minden ismétlődő dolog egy helyen.</td></tr>
+        <tr><td class="label">mit teszek én</td><td>Import script + adatszint-ellenőrzés + tagek + ismétlődés-szabályok átemelése · 3-4 ó</td></tr>
+        <tr><td class="label">költség</td><td>25 e Ft egyszeri · te oldalon. Nálam: fair óra-ár, csak amennyiért megéri csinálnom.</td></tr>
+        <tr><td class="label">mikor érdemes</td><td>Bármikor. Önálló mini-projekt, nincs köze a #1/#2/#3-hoz.</td></tr>
+      </table>
+      <p style="margin-top:8px">Ha valamelyik napon szeretnéd, hogy „egy hét múlva már ne legyen kettős task manager" — ez az.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>D · Wellness discovery session</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">90 perc te · 90 perc én · 0 Ft · 1 hónap múlva</span></summary>
+    <div class="body">
+      <table class="tbl">
+        <tr><td class="label">mit kérek tőled</td><td>90 perces session: TA-pontosítás (kiknek megy a leadgen), csomag-árak (S/M/L), brand-név (új vs meglévő wellness-projekt), regisztráció-flow, ASZF-kérdések</td></tr>
+        <tr><td class="label">mit nyersz</td><td><strong>2-pages design-doc</strong> a leófolt 1M+/hó pipe Te-nélküli verziójáról. <em>Nem kötelez semmire</em> — döntés a doc után. Lehet, hogy magad valósítod meg, lehet, hogy én viszem rev-share-rel, lehet, hogy elteszed későbbre.</td></tr>
+        <tr><td class="label">mit teszek én</td><td>90 perc session + 2 hét research (Stripe vs Barion, LinkedIn ToS, hasonló SaaS-ok) + 2-pages doc</td></tr>
+        <tr><td class="label">mire jó konkrétan</td><td>Megtudod: <strong>érdemes-e építeni</strong>. Nem te döntöd egyedül, hanem doc-alapon — kockázatokkal, költségekkel.</td></tr>
+        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 90 perc</td></tr>
+      </table>
+      <p style="margin-top:8px">Akkor érdemes választanod, ha tetszik az irány, de a 30-50 órás build-elköteleződés <strong>félő</strong>. A discovery 0 cash-szel ad biztos választ.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>E · Mind együtt — full deal</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">4 ó te · 50-70 ó én · setup + havi · 8-12 hét</span></summary>
+    <div class="body">
+      <table class="tbl">
+        <tr><td class="label">tartalom</td><td>A (#1 Hosting próba) + B (#2 brainstorm + build) + D (#3 discovery + esetleg build) + C (task migráció)</td></tr>
+        <tr><td class="label">te idő szétosztva</td><td>30p (A űrlap) + 30p (B brainstorm) + 2× 1ó (B build review) + 90p (D discovery) + 30p (C dump) = ~4 óra · 8-12 hét alatt szétosztva</td></tr>
+        <tr><td class="label">én idő</td><td>7-10ó (#1) + 12-15ó (#2) + 30-50ó (#3) + 3-4ó (C) = 50-80 óra · 8-12 hét alatt szétosztva</td></tr>
+        <tr><td class="label">költség te oldal</td><td>0 (#1 próba) + 90 e + 12 e/hó (#2) + 0 (#3 rev-share / 15% MRR / 12 hó) + 25 e (C) = <strong>115 e Ft egyszeri + 12 e/hó</strong></td></tr>
+        <tr><td class="label">mit nyersz</td><td>(1) 1 admin reaktív óráinak kiváltása. (2) Hétfő reggeli 2 perces briefing 9 cégről. (3) Wellness leófolt pipe újraindítása Te-nélkül. (C) Kettős task manager vége.</td></tr>
+        <tr><td class="label">mit nyerek én</td><td>fair óra-ár #1+#2-re · rev-share upside #3-ra (csak ha működik) · SS-szinergia · másoknak skálázható portfolio</td></tr>
+      </table>
+      <p style="margin-top:8px">Akkor érdemes választanod, ha <strong>biztos vagy</strong> mindhárom irányban, és nem akarsz minden 2-3 hetet újra-döntéssel tölteni.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>F · „Köszi, most nem aktuális"</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">0 perc · 0 Ft · bármikor</span></summary>
+    <div class="body">
+      <p>Ez is teljes válasz. Az ajánlat <strong>nyitva marad</strong> — bármikor 1 mondatra újraindítjuk. Soha nem küldök follow-upot, nem teszek FOMO-t, nem érvelek tovább. SmileStone-on találkozunk, ott megyünk tovább.</p>
+      <p style="font-size:13.5px;color:var(--text-faint)">Ha valamikor előjönnek ezek a fájdalmak, csak szólj — addig is megvan a saját rendszered.</p>
+    </div>
+  </details>
+
+  <p style="margin:22px 0 14px;font-size:15px;line-height:1.65;padding:14px 16px;background:var(--bg-soft);border-radius:5px;border-left:3px solid var(--accent)">
+    👉 <strong>Válasz:</strong> Slack DM · vagy <a href="mailto:zsoltipi@gmail.com?subject=Oli%20javaslat%20%E2%80%94%20A%20Hosting%20pr%C3%B3ba">zsoltipi@gmail.com</a> · <strong>egy betű elég</strong> (A / B / C / D / E / F)
   </p>
 </section>
 
