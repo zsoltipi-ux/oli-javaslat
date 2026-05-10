@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javaslat — Olinak</title>
+<meta name="description" content="Három eszköz a sok cégedhez — abban a sorrendben, ahogy a heteid működnek. Egy ami most mehet, egy ami a számokat összeszedi, egy ami a sorba állókat beengedi — Te nélküled.">
+<meta name="theme-color" content="#F4EFE6">
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<noscript><style>.reveal,.hero-stagger > *{opacity:1!important;transform:none!important}</style></noscript>
+
+<style>
+:root{
+  --bg:#F4EFE6;
+  --bg-soft:#EDE5D7;
+  --bg-card:#FBF7EE;
+  --ink:#1A1815;
+  --ink-soft:#5A554F;
+  --ink-faint:#8A8278;
+  --line:rgba(26,24,21,.10);
+  --line-strong:rgba(26,24,21,.20);
+  --accent:#8B6635;          /* bronze — Tier 0 */
+  --accent-deep:#5E4523;
+  --accent-soft:#E9DBC3;
+  --gold:#BC9A5E;            /* warm gold — Tier 1 */
+  --gold-soft:#F0E4CE;
+  --olive:#6E7A50;           /* sage olive — Tier 2 */
+  --olive-soft:#DCE0CB;
+  --ember:#A0492A;           /* burnt accent — KIEMELT wedge */
+  --ember-soft:#EFD3C2;
+  --radius:12px;
+  --radius-lg:18px;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+  --mono:'Geist Mono',ui-monospace,monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--bg);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-text-size-adjust:100%;
+  position:relative;
+  overflow-x:hidden;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"kern" 1,"liga" 1,"calt" 1;
+  font-variant-numeric:oldstyle-nums proportional-nums;
+}
+
+/* Atmosphere — cream paper + bronze + olive radial accents + paper noise */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(139,102,53,.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 88% 28%, rgba(110,122,80,.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(188,154,94,.04) 0%, transparent 50%);
+  pointer-events:none;z-index:0;
+}
+body::after{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity:.50;
+  mix-blend-mode:multiply;
+  pointer-events:none;z-index:0;
+}
+
+/* Scroll-progress — bronze→gold ribbon */
+.scroll-progress{
+  position:fixed;top:0;left:0;
+  height:2px;width:0%;
+  background:linear-gradient(90deg,var(--accent) 0%,var(--gold) 100%);
+  z-index:1000;
+  transition:width .12s ease-out;
+  box-shadow:0 0 8px rgba(139,102,53,.3);
+}
+
+::selection{background:var(--accent-soft);color:var(--accent-deep)}
+::-moz-selection{background:var(--accent-soft);color:var(--accent-deep)}
+
+h1,h2,h3,.section-title,.lede{
+  font-feature-settings:"kern" 1,"liga" 1,"dlig" 1,"calt" 1,"ss01" 1;
+  font-variation-settings:"opsz" 32;
+}
+.serif,em,i{
+  font-feature-settings:"kern" 1,"liga" 1,"dlig" 1,"calt" 1;
+}
+.mono,code{
+  font-feature-settings:"tnum" 1,"zero" 1,"ss01" 1;
+  font-variant-numeric:tabular-nums;
+}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+.hero-stagger > *{opacity:0;transform:translateY(8px);animation:hero-in .9s cubic-bezier(.22,1,.36,1) forwards}
+.hero-stagger > *:nth-child(1){animation-delay:.05s}
+.hero-stagger > *:nth-child(2){animation-delay:.18s}
+.hero-stagger > *:nth-child(3){animation-delay:.36s}
+.hero-stagger > *:nth-child(4){animation-delay:.52s}
+@keyframes hero-in{to{opacity:1;transform:translateY(0)}}
+
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:transparent;color:inherit}
+
+.container{max-width:760px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* TYPO HELPERS */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+  font-weight:500;
+}
+.mono{font-family:var(--mono)}
+.serif{font-family:var(--serif)}
+
+/* HERO */
+.hero{
+  padding:96px 24px 64px;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+.hero-inner{max-width:720px;margin:0 auto;position:relative}
+/* Engineer's folio marker — top center */
+.hero-inner::before{
+  content:"DRAFT · v.1 · 2026-V";
+  position:absolute;
+  top:-14px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);
+  font-weight:500;
+  font-size:10.5px;letter-spacing:.22em;
+  color:var(--accent-deep);
+  opacity:.55;
+  white-space:nowrap;
+}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:36px}
+.hero .eyebrow::before,.hero .eyebrow::after{content:"";width:32px;height:1px;background:linear-gradient(90deg,transparent,var(--accent-deep),transparent);opacity:.55}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(38px,7vw,68px);
+  line-height:1.04;
+  letter-spacing:-.025em;
+  margin-bottom:28px;
+  color:var(--ink);
+  text-wrap:balance;
+}
+.hero h1 em{
+  font-style:italic;
+  color:var(--accent-deep);
+  font-weight:400;
+  position:relative;
+  display:inline-block;
+}
+.hero h1 em::after{
+  content:"";
+  position:absolute;
+  left:2%;right:6%;bottom:.06em;
+  height:.14em;
+  background:var(--accent-soft);
+  z-index:-1;
+  border-radius:3px;
+  transform:scaleX(0);
+  transform-origin:left;
+  animation:hero-underline 1.4s cubic-bezier(.22,1,.36,1) .9s forwards;
+}
+@keyframes hero-underline{to{transform:scaleX(1)}}
+.hero .lede{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(18px,2.2vw,22px);
+  color:var(--ink-soft);
+  max-width:560px;
+  margin:0 auto 36px;
+  line-height:1.55;
+}
+.hero-meta{
+  display:inline-flex;
+  flex-wrap:wrap;
+  gap:8px 24px;
+  justify-content:center;
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--ink-faint);
+  letter-spacing:.04em;
+}
+.hero-meta strong{color:var(--ink);font-weight:500}
+
+/* SECTION */
+section{padding:64px 0;position:relative;z-index:1}
+section+section{border-top:1px solid var(--line)}
+
+.section-num{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--accent-deep);
+  letter-spacing:.18em;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-num::after{content:"";flex:1;height:1px;background:var(--line);max-width:80px}
+.section-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(28px,4.5vw,42px);
+  line-height:1.15;
+  letter-spacing:-.015em;
+  margin-bottom:14px;
+  color:var(--ink);
+  text-wrap:balance;
+}
+.section-title em{font-style:italic;color:var(--accent-deep)}
+.section-sub{
+  color:var(--ink-soft);
+  font-size:16px;
+  margin-bottom:30px;
+  max-width:60ch;
+  line-height:1.65;
+}
+
+/* INTRO LETTER — engineer's note, monospace meta + serif body */
+.letter{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:34px 36px 30px 40px;
+  margin:32px 0 16px;
+  position:relative;
+  box-shadow:
+    0 1px 2px rgba(26,24,21,.04),
+    0 12px 36px -16px rgba(139,102,53,.16);
+}
+/* Bronze "spine" left edge */
+.letter::before{
+  content:"";
+  position:absolute;
+  top:14px;bottom:14px;left:14px;
+  width:2px;
+  background:linear-gradient(180deg,var(--accent) 0%,rgba(139,102,53,.3) 60%,transparent 100%);
+  border-radius:1px;
+}
+.letter::after{
+  content:"BUDAPEST · 2026 · MÁJ";
+  position:absolute;
+  top:18px;right:22px;
+  font-family:var(--mono);
+  font-size:9px;letter-spacing:.22em;
+  color:var(--accent);
+  opacity:.65;
+  font-weight:500;
+}
+.letter-eyebrow{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+  margin-bottom:22px;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.letter-eyebrow::before{content:"§";color:var(--accent-deep);font-style:italic;font-family:var(--serif);font-size:14px}
+.letter p{
+  font-family:var(--serif);
+  font-size:18.5px;
+  line-height:1.62;
+  color:var(--ink-soft);
+  margin-bottom:18px;
+  letter-spacing:-.003em;
+}
+.letter strong{color:var(--ink);font-weight:500}
+.letter em{font-style:italic;color:var(--accent-deep)}
+.letter .signoff{
+  margin-top:26px;
+  padding-top:20px;
+  border-top:1px dashed var(--line-strong);
+  font-style:italic;
+  font-size:18px;
+  font-family:var(--serif);
+  color:var(--ink);
+}
+
+/* HEARD CARDS — verbatim Oli quotes, engineer's pull-quote */
+.heard-grid{display:grid;gap:18px;margin:28px 0}
+.heard{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:28px 30px;
+  position:relative;
+  transition:border-color .35s cubic-bezier(.22,1,.36,1),transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s cubic-bezier(.22,1,.36,1);
+}
+.heard:hover{
+  border-color:var(--line-strong);
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px -28px rgba(139,102,53,.32);
+}
+.heard.kiemelt{border-color:var(--ember-soft);background:linear-gradient(180deg,#FBF1E5 0%,var(--bg-card) 100%)}
+.heard.kiemelt:hover{box-shadow:0 18px 40px -28px rgba(160,73,42,.4)}
+.heard .num{
+  position:absolute;
+  top:18px;right:24px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:34px;
+  line-height:1;
+  color:var(--olive);
+  opacity:.55;
+  letter-spacing:-.02em;
+}
+.heard.kiemelt .num{color:var(--ember);opacity:.8}
+.heard h3{
+  font-family:var(--serif);
+  font-size:21px;
+  font-weight:400;
+  letter-spacing:-.012em;
+  margin-bottom:16px;
+  color:var(--ink);
+  padding-right:50px;
+}
+.heard .quote{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  color:var(--ink);
+  font-size:19.5px;
+  line-height:1.45;
+  letter-spacing:-.008em;
+  padding:14px 0 14px 22px;
+  background:transparent;
+  border-left:2px solid var(--accent);
+  margin-bottom:14px;
+}
+.heard.kiemelt .quote{border-left-color:var(--ember)}
+.heard .meaning{
+  font-size:14.5px;
+  color:var(--ink-soft);
+  line-height:1.62;
+  padding-left:22px;
+  border-left:1px dashed var(--line);
+}
+.heard .meaning strong{color:var(--ink);font-weight:600}
+.heard .meaning em{color:var(--accent-deep);font-style:italic}
+.heard.kiemelt .meaning em{color:var(--ember)}
+.heard-tag{
+  position:absolute;bottom:24px;right:24px;
+  font-family:var(--mono);
+  font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--olive);
+  opacity:.7;
+  font-weight:500;
+}
+.heard.kiemelt .heard-tag{color:var(--ember)}
+
+/* TOOLS */
+.tools{display:grid;gap:24px;margin:32px 0}
+.tool{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:32px;
+  position:relative;
+  overflow:hidden;
+}
+.tool::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;height:3px;
+}
+.tool.now::before{background:linear-gradient(90deg,var(--ember),var(--accent))}
+.tool.soon::before{background:linear-gradient(90deg,var(--gold),#A88550)}
+.tool.later::before{background:linear-gradient(90deg,var(--olive),#5C7A58)}
+
+.tool-head{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+.tool-num{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:54px;
+  line-height:1;
+  flex-shrink:0;
+}
+.tool.now .tool-num{color:var(--accent)}
+.tool.soon .tool-num{color:var(--gold)}
+.tool.later .tool-num{color:var(--olive)}
+.tool-tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:6px 12px;
+  border-radius:6px;
+  white-space:nowrap;
+}
+.tool.now .tool-tag{background:var(--accent-soft);color:var(--accent-deep)}
+.tool.soon .tool-tag{background:var(--gold-soft);color:#7A5A2A}
+.tool.later .tool-tag{background:var(--olive-soft);color:#3A4630}
+
+.tool h3{
+  font-family:var(--serif);
+  font-size:28px;
+  font-weight:400;
+  line-height:1.15;
+  letter-spacing:-.01em;
+  margin-bottom:10px;
+  color:var(--ink);
+}
+.tool .pitch{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:17px;
+  color:var(--ink-soft);
+  margin-bottom:24px;
+  line-height:1.55;
+}
+.tool .pitch em{color:var(--accent-deep);font-style:italic}
+
+/* DEMO base */
+.demo{
+  background:linear-gradient(180deg,var(--bg-soft) 0%,var(--bg) 100%);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px;
+  margin:18px 0 20px;
+}
+.demo-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tab-btn{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  padding:7px 12px;border-radius:6px;
+  background:transparent;color:var(--ink-soft);
+  border:1px solid var(--line);
+  letter-spacing:.04em;
+  transition:background .15s,border-color .15s,color .15s;
+}
+.tab-btn:hover{border-color:var(--accent-soft);color:var(--accent-deep)}
+.tab-btn.active{background:var(--accent-soft);color:var(--accent-deep);border-color:var(--accent-soft)}
+.tool.soon .tab-btn:hover{border-color:var(--gold-soft);color:#7A5A2A}
+.tool.soon .tab-btn.active{background:var(--gold-soft);color:#7A5A2A;border-color:var(--gold-soft)}
+.tool.later .tab-btn:hover{border-color:var(--olive-soft);color:#3A4630}
+.tool.later .tab-btn.active{background:var(--olive-soft);color:#3A4630;border-color:var(--olive-soft)}
+
+/* TERMINAL DEMO — Tool 01 (Hosting) */
+.terminal{
+  background:#1A1815;
+  border-radius:var(--radius);
+  padding:0;
+  overflow:hidden;
+  box-shadow:0 18px 40px -22px rgba(26,24,21,.45),0 1px 0 rgba(255,255,255,.04) inset;
+  font-family:var(--mono);
+  font-size:13px;
+  color:#D8CFC1;
+  line-height:1.55;
+}
+.term-bar{
+  background:#13110F;
+  padding:10px 16px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;gap:8px;
+  font-size:10.5px;letter-spacing:.12em;
+  color:#8A8278;text-transform:uppercase;
+}
+.term-bar .dots{display:flex;gap:6px;margin-right:12px}
+.term-bar .dots span{width:9px;height:9px;border-radius:50%;background:#3A332D}
+.term-bar .dots span:first-child{background:#A0492A}
+.term-bar .dots span:nth-child(2){background:#BC9A5E}
+.term-bar .dots span:nth-child(3){background:#6E7A50}
+.term-body{padding:18px 20px 20px;min-height:240px;overflow-x:auto}
+.term-body .line{display:block;white-space:pre;opacity:0;transform:translateY(2px);transition:opacity .35s,transform .35s}
+.term-body .line.visible{opacity:1;transform:translateY(0)}
+.term-body .ts{color:#8A8278}
+.term-body .ok{color:#A8C088}
+.term-body .warn{color:#E2B864}
+.term-body .err{color:#D87A4F}
+.term-body .label{color:#BC9A5E}
+.term-body .h{color:#FBF7EE;font-weight:500}
+.term-body .dim{color:#5A554F}
+.term-body .arrow{color:#8B6635}
+.term-body .ico{color:#D8CFC1}
+
+/* DASHBOARD DEMO — Tool 02 */
+.dashboard{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 1px 2px rgba(26,24,21,.04),0 18px 40px -22px rgba(188,154,94,.2);
+}
+.dash-head{
+  background:linear-gradient(180deg,#FBF7EE 0%,var(--bg-soft) 100%);
+  padding:14px 20px;
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:8px;
+}
+.dash-title{
+  font-family:var(--serif);font-size:15.5px;font-weight:500;
+  color:var(--ink);
+  display:flex;align-items:center;gap:10px;
+}
+.dash-title::before{content:"●";color:var(--olive);font-size:8px;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.dash-meta{
+  font-family:var(--mono);font-size:10px;
+  color:var(--ink-faint);letter-spacing:.12em;
+}
+.dash-body{padding:20px 22px}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:18px}
+.metric{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:12px 14px;
+}
+.metric .lbl{
+  font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.14em;color:var(--ink-faint);
+  text-transform:uppercase;margin-bottom:6px;
+  display:block;
+}
+.metric .val{
+  font-family:var(--serif);
+  font-size:22px;font-weight:400;
+  color:var(--ink);line-height:1.1;
+  letter-spacing:-.01em;
+}
+.metric .delta{
+  font-family:var(--mono);font-size:11px;
+  margin-top:4px;letter-spacing:.02em;
+}
+.metric .delta.up{color:#3A5836}
+.metric .delta.down{color:#A0492A}
+.metric .delta.flat{color:var(--ink-faint)}
+.dash-rows{display:flex;flex-direction:column;gap:8px}
+.dash-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:8px;
+  font-size:13.5px;
+  flex-wrap:wrap;gap:6px;
+}
+.dash-row .name{
+  display:flex;align-items:center;gap:10px;
+  font-weight:500;color:var(--ink);
+}
+.dash-row .name .dot{width:7px;height:7px;border-radius:50%}
+.dash-row .name .dot.green{background:var(--olive)}
+.dash-row .name .dot.gold{background:var(--gold)}
+.dash-row .name .dot.red{background:var(--ember)}
+.dash-row .num{
+  font-family:var(--mono);font-size:13px;
+  color:var(--ink-soft);letter-spacing:.02em;
+}
+.dash-row .num strong{color:var(--ink);font-weight:500}
+.dash-row .tag{
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;
+}
+.dash-row .tag.gold{background:var(--gold-soft);color:#7A5A2A}
+.dash-row .tag.green{background:var(--olive-soft);color:#3A4630}
+.dash-row .tag.red{background:var(--ember-soft);color:#7A2D1A}
+
+/* FUNNEL DEMO — Tool 03 */
+.funnel{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px 22px 22px;
+}
+.funnel-row{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 0;
+  border-bottom:1px dashed var(--line);
+}
+.funnel-row:last-child{border-bottom:0}
+.funnel-step{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--olive-soft);color:#3A4630;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-style:italic;font-size:18px;font-weight:400;
+  flex-shrink:0;
+}
+.funnel-row.act .funnel-step{background:var(--olive);color:#FBF7EE}
+.funnel-content{flex:1}
+.funnel-content .step-title{
+  font-weight:500;color:var(--ink);font-size:14.5px;margin-bottom:2px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.funnel-content .step-desc{
+  font-size:13px;color:var(--ink-soft);line-height:1.5;
+}
+.funnel-content .step-meta{
+  font-family:var(--mono);font-size:10px;
+  color:var(--olive);letter-spacing:.1em;
+  padding:2px 8px;background:var(--olive-soft);border-radius:4px;
+  text-transform:uppercase;
+}
+.funnel-summary{
+  margin-top:16px;
+  padding:12px 14px;
+  background:linear-gradient(135deg,var(--olive-soft) 0%,#E5E8D2 100%);
+  border-radius:8px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14.5px;
+  color:#3A4630;
+  text-align:center;
+  line-height:1.55;
+}
+.funnel-summary strong{color:var(--ink);font-weight:600;font-style:normal}
+
+/* ACCORDION */
+details.acc{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:10px;
+  margin:10px 0;
+  overflow:hidden;
+  transition:background .2s;
+}
+details.acc[open]{background:var(--bg-card)}
+details.acc summary{
+  list-style:none;
+  padding:14px 18px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:13.5px;
+  font-weight:500;
+  color:var(--ink);
+  user-select:none;
+}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary::after{
+  content:"+";
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:300;
+  color:var(--accent);
+  transition:transform .2s;
+  line-height:1;
+}
+details.acc[open] summary::after{transform:rotate(45deg)}
+details.acc summary:hover{color:var(--accent-deep)}
+.tool.soon details.acc summary::after{color:var(--gold)}
+.tool.later details.acc summary::after{color:var(--olive)}
+.acc-body{
+  padding:0 18px 18px;
+  font-size:14px;
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.acc-body p{margin-bottom:10px}
+.acc-body p:last-child{margin-bottom:0}
+.acc-body ul{padding-left:0;list-style:none;margin:6px 0}
+.acc-body li{padding:4px 0;display:flex;gap:10px;font-size:13.5px}
+.acc-body li::before{content:"›";color:var(--accent);flex-shrink:0;font-weight:600}
+.tool.soon .acc-body li::before{color:var(--gold)}
+.tool.later .acc-body li::before{color:var(--olive)}
+.acc-body strong{color:var(--ink);font-weight:600}
+.acc-body em{color:var(--accent-deep);font-style:italic}
+.acc-body .lbl{
+  font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);
+}
+
+/* TOOL META PILLS */
+.tool-meta{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:8px;padding-top:18px;
+  border-top:1px solid var(--line);
+}
+.tool-meta-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;
+  padding:5px 12px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--ink-soft);
+  font-family:var(--mono);
+  letter-spacing:.02em;
+}
+.tool-meta-pill strong{color:var(--ink);font-weight:500}
+
+/* OFFER TABLE */
+.offer-table{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:24px 0;
+}
+.offer-table table{width:100%;border-collapse:collapse;font-size:14px}
+.offer-table th{
+  background:var(--bg-soft);
+  text-align:left;
+  padding:12px 18px;
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:500;
+}
+.offer-table td{padding:14px 18px;border-top:1px solid var(--line);vertical-align:top}
+.offer-table td:first-child{font-weight:500;color:var(--ink)}
+.offer-table td .sub{display:block;font-weight:400;color:var(--ink-faint);font-size:12.5px;margin-top:3px;font-family:var(--mono);letter-spacing:.02em}
+.offer-table .free{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:11px;
+  background:var(--ember-soft);
+  color:#7A2D1A;
+  padding:3px 9px;
+  border-radius:4px;
+  letter-spacing:.05em;
+  font-weight:500;
+}
+.offer-table .gold-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:11px;
+  background:var(--gold-soft);
+  color:#7A5A2A;
+  padding:3px 9px;
+  border-radius:4px;
+  letter-spacing:.05em;
+  font-weight:500;
+}
+.offer-table .olive-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:11px;
+  background:var(--olive-soft);
+  color:#3A4630;
+  padding:3px 9px;
+  border-radius:4px;
+  letter-spacing:.05em;
+  font-weight:500;
+}
+
+/* TIMELINE */
+.timeline{margin:28px 0 8px}
+.tl-item{display:flex;gap:18px;padding-bottom:26px;position:relative}
+.tl-item:not(:last-child)::after{content:"";position:absolute;left:21px;top:48px;bottom:0;width:1px;background:var(--line)}
+.tl-dot{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-style:italic;font-size:18px;
+  color:#FBF7EE;flex-shrink:0;z-index:1;
+}
+.tl-dot.bronze{background:var(--accent)}
+.tl-dot.gold{background:var(--gold)}
+.tl-dot.olive{background:var(--olive)}
+.tl-content h4{
+  font-family:var(--serif);
+  font-size:20px;font-weight:400;
+  margin-bottom:4px;letter-spacing:-.005em;
+}
+.tl-content p{font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+.tl-content .effort{
+  display:inline-block;
+  margin-top:8px;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--ink-faint);
+  letter-spacing:.06em;
+}
+
+/* FUTURES (long-term ideas accordion) */
+.futures-section{position:relative}
+.futures{display:grid;gap:10px;margin:28px 0 16px}
+.futures details.fut{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  transition:border-color .25s,background .25s;
+}
+.futures details.fut[open]{border-color:var(--olive-soft);background:var(--bg-card)}
+.futures details.fut summary{
+  padding:16px 20px;
+  cursor:pointer;
+  display:flex;align-items:baseline;gap:10px;
+  flex-wrap:wrap;
+  font-size:15px;
+  list-style:none;
+  user-select:none;
+  color:var(--ink);
+  position:relative;
+  transition:background .15s;
+}
+.futures details.fut summary::-webkit-details-marker{display:none}
+.futures details.fut summary:hover{background:var(--bg-soft)}
+.futures details.fut summary::after{
+  content:"+";
+  position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  font-family:var(--serif);font-size:22px;font-weight:300;
+  color:var(--olive);
+  transition:transform .25s;
+  line-height:1;
+}
+.futures details.fut[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.futures .fut-ico{font-size:18px;line-height:1;flex-shrink:0;width:22px;text-align:center}
+.futures .fut-label{font-weight:500;color:var(--ink);letter-spacing:-.005em}
+.futures .fut-tease{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14.5px;
+  color:var(--ink-faint);
+  letter-spacing:-.003em;
+  font-weight:300;
+}
+.futures details.fut .acc-body{
+  padding:0 22px 20px;
+  font-size:14.5px;line-height:1.65;
+  color:var(--ink-soft);
+}
+.futures details.fut .acc-body p{margin-bottom:10px}
+.futures-note{
+  margin-top:18px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--ink-faint);
+  text-align:center;
+  letter-spacing:-.003em;
+}
+.futures-note em{color:var(--accent-deep);font-style:italic}
+@media(max-width:600px){
+  .futures details.fut summary{font-size:14.5px;padding:14px 18px;padding-right:42px}
+  .futures .fut-tease{font-size:13.5px;display:block;width:100%;margin-top:2px}
+}
+
+/* CTA */
+.cta-section{
+  background:linear-gradient(135deg,#1A1815 0%,#2A2520 100%);
+  color:#FBF7EE;
+  padding:56px 32px;
+  text-align:center;
+  border-radius:var(--radius-lg);
+  margin:40px 0 24px;
+  position:relative;
+  overflow:hidden;
+}
+.cta-section::before{
+  content:"";
+  position:absolute;
+  top:-30%;right:-10%;width:60%;height:160%;
+  background:radial-gradient(ellipse,var(--accent) 0%,transparent 60%);
+  opacity:.20;pointer-events:none;
+}
+.cta-section::after{
+  content:"";
+  position:absolute;
+  bottom:-30%;left:-10%;width:50%;height:140%;
+  background:radial-gradient(ellipse,var(--gold) 0%,transparent 60%);
+  opacity:.14;pointer-events:none;
+}
+.cta-section h2{
+  font-family:var(--serif);
+  font-size:clamp(28px,4vw,38px);
+  font-weight:400;
+  line-height:1.18;
+  margin-bottom:14px;
+  position:relative;
+  letter-spacing:-.01em;
+}
+.cta-section h2 em{font-style:italic;color:var(--accent-soft)}
+.cta-section p{
+  color:rgba(251,247,238,.74);
+  font-size:16px;
+  font-family:var(--serif);
+  font-style:italic;
+  margin-bottom:32px;
+  max-width:480px;
+  margin-left:auto;margin-right:auto;
+  line-height:1.55;
+  position:relative;
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;position:relative}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:500;
+  padding:15px 28px;
+  border-radius:10px;
+  text-decoration:none;
+  transition:all .2s;
+  line-height:1;
+  font-family:var(--sans);
+}
+.cta-btn.primary{background:var(--accent);color:#FBF7EE}
+.cta-btn.primary:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.cta-btn.ghost{background:transparent;color:#FBF7EE;border:1px solid rgba(251,247,238,.25)}
+.cta-btn.ghost:hover{background:rgba(251,247,238,.08);border-color:rgba(251,247,238,.5)}
+.cta-btn .ico{font-size:13px;opacity:.85}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:36px 24px 56px;
+  font-size:13px;
+  line-height:1.6;
+  position:relative;z-index:1;
+  color:var(--ink-faint);
+}
+footer .sig{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink-soft);
+  font-size:18px;
+  margin-top:10px;
+}
+footer .small{
+  margin-top:18px;
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.08em;
+  color:var(--ink-faint);
+  max-width:540px;
+  margin-left:auto;margin-right:auto;
+  line-height:1.7;
+}
+
+@media(max-width:600px){
+  .hero{padding:60px 22px 36px}
+  section{padding:48px 0}
+  .container{padding:0 20px}
+  .tool{padding:24px 22px}
+  .tool h3{font-size:24px}
+  .tool-num{font-size:44px}
+  .heard{padding:20px 22px}
+  .heard h3{font-size:19px}
+  .heard .quote{font-size:17.5px}
+  .letter{padding:26px 22px 22px 30px}
+  .letter p{font-size:16.5px}
+  .cta-section{padding:42px 24px;margin:32px 0 20px}
+  .offer-table th,.offer-table td{padding:10px 14px}
+  .offer-table table{font-size:13px}
+  .demo{padding:18px}
+  .term-body{padding:14px 16px;font-size:11.5px}
+  .dash-body{padding:16px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0s!important;transition-duration:0s!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .hero-stagger > *{opacity:1!important;transform:none!important}
+  .hero h1 em::after{transform:scaleX(1)!important}
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner hero-stagger">
+    <div class="eyebrow">Személyes javaslat</div>
+    <h1>Három eszköz — <em>abban a sorrendben, ahogy a heteid működnek.</em></h1>
+    <p class="lede">Egy ami most mehet, egy ami a számokat összeszedi, egy ami a sorba állókat beengedi — Te nélküled.</p>
+    <div class="hero-meta">
+      <span>Készült <strong>Olinak</strong></span>
+      <span>·</span>
+      <span><strong>2026.05.11.</strong> hétfő, 8:30</span>
+      <span>·</span>
+      <span>Olvasási idő ~<strong>8 perc</strong></span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- 01 — INTRO LETTER -->
+<section>
+  <div class="section-num">01 — Egy szó előre</div>
+  <h2 class="section-title">Olvastam vissza a felvételt — <em>háromszor.</em></h2>
+
+  <div class="letter">
+    <div class="letter-eyebrow">Olinak, üzlettárs között</div>
+    <p>A 20 percre küldött 8 kérdésre <strong>20-szor olyan részletesen</strong> válaszoltál, mint amire számítottam — és ettől nem egy <em>generikus automatizáció-listát</em> tudok adni vissza, hanem egy konkrét, rád szabott hármast.</p>
+
+    <p>A logika tiszta: a heteid 90%-a már <strong>jól megírt rendszer</strong> — a custom task manager, a vasárnap-esti tervezés, az eszköz-tag-ek, a halogatás-szabályozás (nehéz fejlesztést előre, daráló utána). Ezeken nem akarok hozzányúlni. <em>Hanem a maradék 10%-on</em>: ahol fizetsz egy embert egy unalmas dologért, ahol fejben tartasz több cég számait, és ahol egy 1M+ HUF/hó-os pipe leófolt, mert nem akartál pofázni.</p>
+
+    <p>Az első eszköz <strong>2 hetes ingyenes próba</strong>. Ha működik, beszélünk a folytatásról. Ha nem — azt is megtanultuk.</p>
+
+    <div class="signoff">— Zsolt</div>
+  </div>
+</section>
+
+<!-- 02 — AMIT HALLOTTAM -->
+<section class="reveal">
+  <div class="section-num">02 — Amit hallottam tőled</div>
+  <h2 class="section-title">Négy mondat, ami <em>kiemelte magát.</em></h2>
+  <p class="section-sub">Kétszer hallgattam vissza a 19 perces dump-ot, és kiírtam minden tételt verbatim. Ezek azok, amik nem operatív zajként, hanem fontos jelzésként hangzottak.</p>
+
+  <div class="heard-grid">
+
+    <div class="heard kiemelt">
+      <h3><span class="num">1</span>Hosting — gyökerestől cserélnéd</h3>
+      <div class="quote">„Hosting amúgy a tárhely, domain, VPS satöbbi, de ez egy baromira unalmas dolog számomra és nem is megy. Konkrétan veszteséges az egész. (...) Ezt gyökerestől szeretném magasabb szinten automatizálni, hogy legalább ő ki legyen váltva."</div>
+      <div class="meaning">Egy 1 fős admint fizetsz egy bizniszhez, amit <strong>csak azért tartasz</strong> meg, mert minden más cég infrastruktúrája rajta van. Ezt <em>te magad</em> mondtad — nem találom ki neked.</div>
+      <div class="heard-tag">→ ezzel kezdünk</div>
+    </div>
+
+    <div class="heard">
+      <h3><span class="num">2</span>Wellness — sorban állnak, kapun nem mész be</h3>
+      <div class="quote">„Wellness projects, ami az LinkedIn-es meg e-mailes leadgenerálás dolog. Az felfutott oda hogy ilyen havi 1 millió forint fölötti pénz jött belőle — de aztán leófoltam az egészet. (...) Sorban állnak ajánlásból ügyfelek, akik fizetnének — csak egyszerűen nincs kedvem így hozzájuk."</div>
+      <div class="meaning">1M+ HUF/hó <strong>kapun belül</strong>, leállítva — mert ember-igényes volt. A megoldás-vízió már a fejedben van: <em>„prepaid önkiszolgáló nexnek finish regisztráció"</em>. Ezt egyhez tudunk építeni.</div>
+      <div class="heard-tag">→ a nagy álom</div>
+    </div>
+
+    <div class="heard">
+      <h3><span class="num">3</span>Pénzügyek — bőven elég, de szét vannak</h3>
+      <div class="quote">„Számlázást nem én csinálok, szóval ilyen szempontból nem látom, de a számlazz.hu meg a könyvelő statisztikájait látom. Nekem ez most jelenleg bőven elég nagy volumenbe — azért tudom, hogy hol mi történik. <strong>Mehetnének jobban a dolgok ennyi.</strong>"</div>
+      <div class="meaning">Te magad mondtad: <em>„mehetnének jobban a dolgok ennyi"</em>. <strong>9+ cég, mindegyik külön rendszerben</strong> — a fejedben tartod a térképet, és ez most működik. De egy hétfő reggeli 2 perces összesítés más szintre emeli ezt.</div>
+      <div class="heard-tag">→ Tier 1</div>
+    </div>
+
+    <div class="heard">
+      <h3><span class="num">4</span>Lustaság-szabály — interakciót kerülsz</h3>
+      <div class="quote">„Az ügyfél-tárgyalásokat majd jól teljesen kiszerveztem, mert ezek voltak azok, amik igazán lefárasztottak — amikor meg kell győzni valakit, vagy egyszerűen pofázni kell. (...) Szerencsére ilyenek nincsenek."</div>
+      <div class="meaning">Ez a <strong>design-elv</strong> minden alábbira: ha egy eszköz beszélgetést, meggyőzést vagy konfliktust követel, az nem neked való. <em>Mind a három alábbi eszköz passzív</em> — Te nem találkozol senkivel, csak a számokkal.</div>
+      <div class="heard-tag">→ design-elv</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 03 — A JAVASLAT -->
+<section class="reveal">
+  <div class="section-num">03 — A javaslat</div>
+  <h2 class="section-title">Három eszköz — <em>a legkevesebb effort, a legtöbb idő.</em></h2>
+  <p class="section-sub">Az első a leg-scope-oltabb és a leggyorsabban beépíthető. A harmadik a hosszú álom — de azzal is konkrét tervem van, ha bekapcsolnád.</p>
+
+  <div class="tools">
+
+    <!-- TOOL 1 — HOSTING HEALTH-PÁSZTOR -->
+    <div class="tool now">
+      <div class="tool-head">
+        <span class="tool-num">i.</span>
+        <span class="tool-tag">Most · 2 hét próba · INGYENES</span>
+      </div>
+      <h3>Hosting Health-Pásztor</h3>
+      <p class="pitch">A te mondatodra épül: <em>„gyökerestől szeretném ezt magasabb szinten automatizálni"</em>. Egy passzív szem, ami minden hajnalban végigmegy mindenen — és <strong>csak akkor szól</strong>, ha tényleg történt valami.</p>
+
+      <div class="demo">
+        <div class="demo-tabs">
+          <button class="tab-btn active" data-target="t1-weekly">📊 Heti összefoglaló</button>
+          <button class="tab-btn" data-target="t1-expiry">🔔 Lejárati riasztás</button>
+          <button class="tab-btn" data-target="t1-payment">💸 Fizetési hiba</button>
+        </div>
+
+        <div class="terminal">
+          <div class="term-bar">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span>oli@hosting-pasztor — heti-skenelés.log</span>
+          </div>
+          <div class="term-body" id="t1-body">
+            <!-- Tab 1 — Weekly summary (default) -->
+            <div class="t1-pane" data-pane="t1-weekly">
+              <span class="line"><span class="ts">[2026-05-11 06:12:03]</span> <span class="h">HETI ÖSSZEFOGLALÓ — 19. HÉT</span></span>
+              <span class="line"><span class="dim">────────────────────────────────────────</span></span>
+              <span class="line"><span class="ok">✓</span> 14 / 14 <span class="label">domain</span> aktív és érvényes</span>
+              <span class="line"><span class="ok">✓</span> 6 / 6 <span class="label">VPS</span> uptime &gt; 99.95%</span>
+              <span class="line"><span class="ok">✓</span> 22 / 22 <span class="label">SSL</span> érvényes és telepített</span>
+              <span class="line"><span class="ok">✓</span> 11 / 11 <span class="label">tárhely</span> renew rendben</span>
+              <span class="line"> </span>
+              <span class="line"><span class="warn">⚠</span> <span class="h">Figyelmedbe</span> — 2 tétel</span>
+              <span class="line">  <span class="arrow">→</span> <span class="label">admin.smilestone.hu</span> SSL <span class="warn">19 nap múlva lejár</span></span>
+              <span class="line">  <span class="arrow">→</span> <span class="label">VPS-3 (DE-1)</span> diszk-használat <span class="warn">82%</span></span>
+              <span class="line"> </span>
+              <span class="line"><span class="dim">[ Részletek: <span class="label">https://hosting-pasztor.fly.dev/2026-w19</span> ]</span></span>
+              <span class="line"><span class="dim">[ Új e-mail: hétfő reggel 06:00 — csak ha van mit jelenteni ]</span></span>
+            </div>
+
+            <!-- Tab 2 — Expiry alert -->
+            <div class="t1-pane" data-pane="t1-expiry" style="display:none">
+              <span class="line"><span class="ts">[2026-05-11 06:00:01]</span> <span class="h">LEJÁRATI RIASZTÁS</span></span>
+              <span class="line"><span class="dim">────────────────────────────────────────</span></span>
+              <span class="line"><span class="warn">⚠</span> <span class="label">SSL</span> — 30 nap alatti lejárat</span>
+              <span class="line">  <span class="arrow">→</span> admin.smilestone.hu <span class="warn">19 nap</span></span>
+              <span class="line">  <span class="arrow">→</span> portal.szallit.hu <span class="warn">26 nap</span></span>
+              <span class="line"> </span>
+              <span class="line"><span class="warn">⚠</span> <span class="label">Domain</span> — 60 nap alatti lejárat</span>
+              <span class="line">  <span class="arrow">→</span> regisztratorom.hu <span class="warn">42 nap</span> · auto-renew <span class="ok">BE</span></span>
+              <span class="line">  <span class="arrow">→</span> jysk-tools.eu <span class="warn">58 nap</span> · auto-renew <span class="err">KI</span></span>
+              <span class="line"> </span>
+              <span class="line"><span class="ok">↳</span> 1 javasolt akció: jysk-tools.eu auto-renew bekapcsolása</span>
+              <span class="line"><span class="dim">[ /skip — ha tényleg le akarod engedni ]</span></span>
+            </div>
+
+            <!-- Tab 3 — Payment failure -->
+            <div class="t1-pane" data-pane="t1-payment" style="display:none">
+              <span class="line"><span class="ts">[2026-05-11 06:00:00]</span> <span class="h">FIZETÉSI HIBA — VPS-PROVIDER</span></span>
+              <span class="line"><span class="dim">────────────────────────────────────────</span></span>
+              <span class="line"><span class="err">✗</span> <span class="label">Hetzner DE-1 / VPS-3</span></span>
+              <span class="line">  <span class="arrow">→</span> 2026-05-09 — 3 sikertelen levonási kísérlet</span>
+              <span class="line">  <span class="arrow">→</span> jelenlegi státusz: <span class="warn">grace period (4 nap)</span></span>
+              <span class="line">  <span class="arrow">→</span> érintett: 2 ügyfél-tárhely, 1 belső eszköz</span>
+              <span class="line"> </span>
+              <span class="line"><span class="ok">↳</span> Lépések:</span>
+              <span class="line">  <span class="arrow">→</span> SmileStone Erste kártya <span class="warn">2025-12-04</span> óta lejárt</span>
+              <span class="line">  <span class="arrow">→</span> új kártya beemelése — <span class="label">~3 perc</span></span>
+              <span class="line"> </span>
+              <span class="line"><span class="dim">[ Friss kártya beküldés: <span class="label">https://hosting-pasztor.fly.dev/cards</span> ]</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="acc">
+        <summary>Hogyan működik / mit fed le</summary>
+        <div class="acc-body">
+          <p><span class="lbl">Inputként</span> egy lista a domainjeidről, VPS-eidről, SSL-eidről, tárhelyeidről és a hozzájuk tartozó providerek API-jairól (vagy login-jairól, ahol nincs API). Ezt egy kérdőíven keresztül beszereztem 1 alkalommal — kb. 30 perc <strong>egyszer</strong>.</p>
+          <p><span class="lbl">Naponta hajnalban</span> futtat egy ellenőrzést:</p>
+          <ul>
+            <li>Domain WHOIS lejárat + auto-renew állapot</li>
+            <li>SSL certificate validity (cert-fájl lekérése + decode)</li>
+            <li>Uptime ping minden VPS-re és kritikus subdomainre</li>
+            <li>Provider-számla státusz (ahol API van — Hetzner, OVH, BlueHost; ahol nincs, ott e-mail scrape)</li>
+            <li>Diszk és RAM-használat scrape (SSH-keys-szel)</li>
+          </ul>
+          <p><span class="lbl">Output</span> — heti e-mail neked hétfő reggel 06:00. <em>De csak akkor küld,</em> ha van benne minimum 1 figyelendő tétel. Ha minden zöld, a heti e-mail simán kimarad. <strong>Zero noise philosophy</strong>: ha nem fontos, ne szóljon.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>Mit nem fed le (még)</summary>
+        <div class="acc-body">
+          <p>Az első verzió <strong>read-only monitor</strong> — figyel és jelez. Nem tesz semmit a háttérben.</p>
+          <p>Ami később jöhet (Tier 0+ extension):</p>
+          <ul>
+            <li><strong>Auto-renew bekapcsolása</strong> ahol API engedi</li>
+            <li>SSL <strong>auto-update</strong> (Let's Encrypt-szel automatikus, fizetős cert-eknél órás manuál)</li>
+            <li><strong>Ügyfél-kommunikáció</strong> (a jelenlegi admin-od egyik fő munkája) — ez a Tier 0+, és van rá tervem</li>
+            <li>Új ügyfél <strong>onboarding-flow</strong></li>
+          </ul>
+          <p>Az első 2 hét pont arra jó, hogy lássuk: a passzív monitor önmagában <strong>kiváltja-e</strong> a jelenlegi admin reaktív munkájának 60-80%-át — és ha igen, melyik 20-40% marad.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>Mit kérek tőled (max 30 perc, egyszer)</summary>
+        <div class="acc-body">
+          <p>Egy 30 perces hívás (vagy ha üzenetben gyorsabb, akkor üzenet) ezekről:</p>
+          <ul>
+            <li>Domain regisztrátor(ok), API key vagy login</li>
+            <li>VPS/tárhely providerek listája</li>
+            <li>SSL provider(ok)</li>
+            <li>A jelenlegi admin-od mit pontosan csinál (hogy lássam mit kell pótolni)</li>
+            <li>Hova küldjem a heti e-mailt</li>
+          </ul>
+          <p>Ezt akár <strong>üzenetben</strong> is megcsinálhatjuk. Hangüzenet bőven elég, nem kell írásban.</p>
+        </div>
+      </details>
+
+      <div class="tool-meta">
+        <span class="tool-meta-pill">Build idő: <strong>~7-10 óra</strong></span>
+        <span class="tool-meta-pill">Futási költség: <strong>0-1$/hó</strong></span>
+        <span class="tool-meta-pill">Beüzemelés: <strong>3-5 nap</strong></span>
+        <span class="tool-meta-pill">A te dolgod: <strong>30 perc, 1×</strong></span>
+      </div>
+    </div>
+
+    <!-- TOOL 2 — CÉGEID 1 KÉPBEN -->
+    <div class="tool soon">
+      <div class="tool-head">
+        <span class="tool-num">ii.</span>
+        <span class="tool-tag">Hamarosan · 3-4 hét · fizetős</span>
+      </div>
+      <h3>Cégeid — egy képben, hétfő reggel</h3>
+      <p class="pitch">A te mondatodra épül: <em>„mehetnének jobban a dolgok ennyi"</em>. Egy hétfő reggeli 2 perces briefing — minden céged egy oldalon, számlázz.hu + bank + KSH adatokból.</p>
+
+      <div class="demo">
+        <div class="demo-tabs">
+          <button class="tab-btn active" data-target="t2-overview">📈 Áttekintés</button>
+          <button class="tab-btn" data-target="t2-anomaly">⚠️ Anomáliák</button>
+          <button class="tab-btn" data-target="t2-cash">💰 Cash-flow</button>
+        </div>
+
+        <div class="dashboard">
+          <div class="dash-head">
+            <div class="dash-title">Hétfő reggel · 19. hét · 9 cég</div>
+            <div class="dash-meta">2026-05-11 · 06:00</div>
+          </div>
+          <div class="dash-body" id="t2-body">
+
+            <!-- Pane 1 — Overview -->
+            <div class="t2-pane" data-pane="t2-overview">
+              <div class="dash-grid">
+                <div class="metric">
+                  <span class="lbl">Össz bevétel · 19. hét</span>
+                  <div class="val">8,42 M Ft</div>
+                  <div class="delta up">+12,4% w/w</div>
+                </div>
+                <div class="metric">
+                  <span class="lbl">Aktív ügyfelek</span>
+                  <div class="val">142</div>
+                  <div class="delta up">+3 új</div>
+                </div>
+                <div class="metric">
+                  <span class="lbl">Lejáró szerződés · 30 napon belül</span>
+                  <div class="val">7</div>
+                  <div class="delta flat">2 kockázati</div>
+                </div>
+              </div>
+              <div class="dash-rows">
+                <div class="dash-row">
+                  <div class="name"><span class="dot green"></span>Domain reg. — Domainvad Kft.</div>
+                  <div class="num"><strong>1,84 M Ft</strong> · 412 ügyfél</div>
+                  <div class="tag green">+18% w/w</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot green"></span>Könyvelő iroda</div>
+                  <div class="num"><strong>2,12 M Ft</strong> · 38 ügyfél</div>
+                  <div class="tag green">stabil</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot gold"></span>Fejvadász</div>
+                  <div class="num"><strong>1,40 M Ft</strong> · 6 nyitott pozi</div>
+                  <div class="tag gold">−8% w/w</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot red"></span>Hosting</div>
+                  <div class="num"><strong>0,38 M Ft</strong> · 19 ügyfél</div>
+                  <div class="tag red">veszteséges</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot green"></span>JYSK SW (raklap + delivery)</div>
+                  <div class="num"><strong>1,68 M Ft</strong> · 4 ország</div>
+                  <div class="tag green">stabil</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot gold"></span>Ingatlan-forgalmazás</div>
+                  <div class="num"><strong>0 Ft</strong> · 0 vásárlás</div>
+                  <div class="tag gold">passzív hét</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot green"></span>Domain-flippelés</div>
+                  <div class="num"><strong>0,18 M Ft</strong> · 2 eladás</div>
+                  <div class="tag green">+1 új port</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pane 2 — Anomaly -->
+            <div class="t2-pane" data-pane="t2-anomaly" style="display:none">
+              <div class="dash-rows">
+                <div class="dash-row">
+                  <div class="name"><span class="dot red"></span>Domainvad Kft. — visszaesés</div>
+                  <div class="num">412 → <strong>389</strong> ügyfél</div>
+                  <div class="tag red">−5,6% MoM</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot gold"></span>Fejvadász — leadgen lassulás</div>
+                  <div class="num">42 → <strong>31</strong> új lead</div>
+                  <div class="tag gold">−26%</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot red"></span>Hosting — 3. veszteséges hónap</div>
+                  <div class="num">−<strong>120 e Ft</strong> nettó</div>
+                  <div class="tag red">trend</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot green"></span>JYSK raklap — új ország?</div>
+                  <div class="num">SK + AT volumen <strong>+34%</strong></div>
+                  <div class="tag green">növelhető</div>
+                </div>
+              </div>
+              <div class="funnel-summary" style="margin-top:14px">
+                <strong>Heti megfigyelés:</strong> a Domainvad ügyfélszám 5,6% csökkenése + a Fejvadász lead-lassulása szezonális, <strong>nem kell ma cselekedned</strong>. A JYSK SK/AT trend viszont 1 órás ránézést megér.
+              </div>
+            </div>
+
+            <!-- Pane 3 — Cash-flow -->
+            <div class="t2-pane" data-pane="t2-cash" style="display:none">
+              <div class="dash-grid">
+                <div class="metric">
+                  <span class="lbl">Banki egyenleg · összes cég</span>
+                  <div class="val">38,7 M Ft</div>
+                  <div class="delta up">+2,1 M w/w</div>
+                </div>
+                <div class="metric">
+                  <span class="lbl">30 napos kötelezettség</span>
+                  <div class="val">5,4 M Ft</div>
+                  <div class="delta flat">stabil</div>
+                </div>
+                <div class="metric">
+                  <span class="lbl">Lejárt számla · ügyfél</span>
+                  <div class="val">2</div>
+                  <div class="delta flat">~180 e Ft</div>
+                </div>
+              </div>
+              <div class="dash-rows">
+                <div class="dash-row">
+                  <div class="name"><span class="dot gold"></span>Áfa — május 20.</div>
+                  <div class="num"><strong>820 e Ft</strong> · 4 cég</div>
+                  <div class="tag gold">9 nap múlva</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot green"></span>Béreknek elkülönített</div>
+                  <div class="num"><strong>2,40 M Ft</strong></div>
+                  <div class="tag green">fedezett</div>
+                </div>
+                <div class="dash-row">
+                  <div class="name"><span class="dot red"></span>Nelly — fizetési határidő</div>
+                  <div class="num"><strong>180 e Ft</strong> · 12 nap késés</div>
+                  <div class="tag red">emlékeztető</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="acc">
+        <summary>Mire ad fókuszt — és mire nem</summary>
+        <div class="acc-body">
+          <p><span class="lbl">A célja</span> — hogy hétfő reggel 2 perc alatt lásd <strong>mind a 9 céged állapotát</strong>: bevétel, ügyfélszám, lejáró szerződés, anomáliák, cash-flow.</p>
+          <p><span class="lbl">Nem CRM</span> — read-only áttekintés. Nem akarja kiváltani a számlázz.hu-t, nem akar új munkafolyamatot, nem kér tőled klikkelést. <em>Csak megmutatja, amit te ma fejben tartasz.</em></p>
+          <p><span class="lbl">Anomália-detektálás</span> — ha valami statisztikailag eltér a 8 hetes átlagtól (új ügyfél, kiesett bevétel, lejáró szerződés, banki anomália), bekarikázza. A többit nem említi.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>Adatforrások</summary>
+        <div class="acc-body">
+          <ul>
+            <li><strong>Számlázz.hu</strong> — minden cég API-n keresztül</li>
+            <li><strong>Bank-feed</strong> — Erste/OTP/CIB API vagy hetente CSV-import (ahol nincs API)</li>
+            <li><strong>Könyvelő-irodád havi statisztikája</strong> — e-mailből parse-olva, vagy direkt access ha lehet</li>
+            <li><strong>KSH iparági benchmarkok</strong> — nyilvános, free API</li>
+            <li><strong>Saját ügyviteli rendszered</strong> (a JYSK delivery + raklap, fejvadász, ingatlan) — read-only DB-access vagy CSV-export</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="tool-meta">
+        <span class="tool-meta-pill">Build idő: <strong>~12-15 óra</strong></span>
+        <span class="tool-meta-pill">Futási költség: <strong>~3-5e Ft/hó</strong></span>
+        <span class="tool-meta-pill">Beüzemelés: <strong>3-4 hét</strong></span>
+        <span class="tool-meta-pill">A te dolgod: <strong>2× 1 órás session</strong></span>
+      </div>
+    </div>
+
+    <!-- TOOL 3 — WELLNESS SELF-SERVE -->
+    <div class="tool later">
+      <div class="tool-head">
+        <span class="tool-num">iii.</span>
+        <span class="tool-tag">Később · 4-6 hét · nagy álom</span>
+      </div>
+      <h3>Wellness Self-Serve — leadgen Te nélküled</h3>
+      <p class="pitch">A te mondatodra épül: <em>„nexnek finish regisztráció, prepaid felület — olyan, amit mások nem csinálnak"</em>. Az 1M+ HUF/hó pipe újra — de úgy, hogy <strong>egyetlen ügyféllel se találkozz</strong>.</p>
+
+      <div class="demo">
+        <div class="demo-tabs">
+          <button class="tab-btn active" data-target="t3-funnel">💳 Self-serve flow</button>
+          <button class="tab-btn" data-target="t3-pipeline">🚀 Auto-pipeline</button>
+          <button class="tab-btn" data-target="t3-dash">📊 Founder-dash</button>
+        </div>
+
+        <div id="t3-body">
+
+          <div class="t3-pane" data-pane="t3-funnel">
+            <div class="funnel">
+              <div class="funnel-row">
+                <div class="funnel-step">1</div>
+                <div class="funnel-content">
+                  <div class="step-title">Landing → kalkulátor <span class="step-meta">5 perc</span></div>
+                  <div class="step-desc">Az ügyfél elmondja: iparág, méret, célzott TA, havi budget. Kapcsolt példa-célzás látszik real-time-ban.</div>
+                </div>
+              </div>
+              <div class="funnel-row">
+                <div class="funnel-step">2</div>
+                <div class="funnel-content">
+                  <div class="step-title">Prepaid csomag választás <span class="step-meta">3 perc</span></div>
+                  <div class="step-desc">3 csomag (S/M/L) — pl. 79k / 199k / 399k Ft. Stripe vagy Barion fizetés. Nincs szerződés-aláírás, általános ÁSZF.</div>
+                </div>
+              </div>
+              <div class="funnel-row">
+                <div class="funnel-step">3</div>
+                <div class="funnel-content">
+                  <div class="step-title">Auto-onboarding e-mail <span class="step-meta">azonnal</span></div>
+                  <div class="step-desc">Ügyfél kapja a hozzáférési linket. Saját dashboardján követheti a leadgen-pipeline állapotát (kiküldve / nyitva / válaszolt).</div>
+                </div>
+              </div>
+              <div class="funnel-row act">
+                <div class="funnel-step">4</div>
+                <div class="funnel-content">
+                  <div class="step-title">Auto-pipeline indul <span class="step-meta">24h-n belül</span></div>
+                  <div class="step-desc">A te meglévő LinkedIn + e-mail scriptjeid az ügyfél nevében (mint white-label) automatikusan elindulnak. <strong>Te nem érintkezel az ügyféllel.</strong></div>
+                </div>
+              </div>
+            </div>
+            <div class="funnel-summary">
+              <strong>A flow lényege:</strong> ami eddig <em>egy szélsz emberi munkája</em> volt, azt szétválasztjuk: <strong>automatizálható részt → kód, emberi rész → kihagyva</strong>. Ahol az ügyfél eddig embert várt, most egy szép terméket kap.
+            </div>
+          </div>
+
+          <div class="t3-pane" data-pane="t3-pipeline" style="display:none">
+            <div class="terminal">
+              <div class="term-bar">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <span>wellness-pipeline / oli-saas / leadgen-runner.log</span>
+              </div>
+              <div class="term-body">
+                <span class="line"><span class="ts">[2026-05-11 09:00:00]</span> <span class="h">PIPELINE START — ügyfél: ColorBoost Studio</span></span>
+                <span class="line"><span class="dim">────────────────────────────────────────</span></span>
+                <span class="line"><span class="label">[1/4]</span> LinkedIn TA-scrape — wellness · női · Bp-Pest-megye</span>
+                <span class="line">      <span class="ok">✓</span> 1842 profil találat · 412 megfelelt szűrőnek</span>
+                <span class="line"><span class="label">[2/4]</span> E-mail enrichment</span>
+                <span class="line">      <span class="ok">✓</span> 287 e-mail kinyerve · 28 visszapattant</span>
+                <span class="line"><span class="label">[3/4]</span> Üzenet-template — ügyfél nevében</span>
+                <span class="line">      <span class="ok">✓</span> 5 verzió A/B-tesztre</span>
+                <span class="line"><span class="label">[4/4]</span> Kiküldés ütemezve</span>
+                <span class="line">      <span class="ok">✓</span> 259 mail · 14 napra szétosztva</span>
+                <span class="line"> </span>
+                <span class="line"><span class="ok">↳</span> Várható ROI <span class="label">3,2×</span> · történelmi átlag alapján</span>
+                <span class="line"><span class="dim">[ Ügyfél dashboard: oli-wellness.app/c/colorboost ]</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="t3-pane" data-pane="t3-dash" style="display:none">
+            <div class="dashboard">
+              <div class="dash-head">
+                <div class="dash-title">Founder-dashboard · csak Te látod</div>
+                <div class="dash-meta">2026-05-11 · 06:00</div>
+              </div>
+              <div class="dash-body">
+                <div class="dash-grid">
+                  <div class="metric">
+                    <span class="lbl">Aktív ügyfelek (havi prepaid)</span>
+                    <div class="val">14</div>
+                    <div class="delta up">+3 hónap óta</div>
+                  </div>
+                  <div class="metric">
+                    <span class="lbl">Havi MRR</span>
+                    <div class="val">2,28 M Ft</div>
+                    <div class="delta up">+820 e w/w</div>
+                  </div>
+                  <div class="metric">
+                    <span class="lbl">Net retention</span>
+                    <div class="val">112%</div>
+                    <div class="delta up">+5pp</div>
+                  </div>
+                </div>
+                <div class="dash-rows">
+                  <div class="dash-row">
+                    <div class="name"><span class="dot green"></span>14 aktív ügyfél · auto-pipeline fut</div>
+                    <div class="num">0 emberi érintkezés</div>
+                    <div class="tag green">design-elv</div>
+                  </div>
+                  <div class="dash-row">
+                    <div class="name"><span class="dot gold"></span>3 új regisztráció · ezen a héten</div>
+                    <div class="num">ajánlásból</div>
+                    <div class="tag gold">organikus</div>
+                  </div>
+                  <div class="dash-row">
+                    <div class="name"><span class="dot green"></span>Stripe/Barion auto-fizetés</div>
+                    <div class="num"><strong>100%</strong> sikeresség · 3 hó</div>
+                    <div class="tag green">stabil</div>
+                  </div>
+                </div>
+                <div class="funnel-summary" style="margin-top:14px">
+                  <strong>14 fizető × ~163 e Ft/hó = 2,28 M Ft havi passzív bevétel.</strong> Te csak akkor lépsz be, ha pénzügyi anomália van, vagy ha új csomagot akarsz hozzáadni.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <details class="acc">
+        <summary>Miért most — és mit kockáztatunk</summary>
+        <div class="acc-body">
+          <p><span class="lbl">A timing</span> — Te magad mondtad: <em>„nexnek finish regisztráció, prepaid felület — olyan, amit mások nem csinálnak"</em>. A vízió már a fejedben van. Itt csak konkretizáljuk, és lebontjuk lépésekre.</p>
+          <p><span class="lbl">A különbség</span> ehhez képest amit ma a piacon csinálnak: <strong>nincs sales-folyamat</strong>. Az ügyfél maga regisztrál, maga fizet, maga onboardol. Nincs kamuzás, nincs „meggyőzés", nincs telefonálgatás. Pont az, amit te magadtól kerülsz.</p>
+          <p><span class="lbl">Kockázat</span> — a self-serve nem mindenkinek megy. Lehet, hogy az első 6 hónapban csak 5-7 fizető lesz, nem 14. <em>De ez ugyanúgy 0 órádba kerül.</em></p>
+          <p><span class="lbl">A költség</span> — itt már komolyabb build (4-6 hét), ezért nem ingyenes. De az árat <strong>setup vagy revenue-share</strong> között választhatod.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>Mi a következő lépés, ha érdekel</summary>
+        <div class="acc-body">
+          <p>Egy 90 perces session ahol végigmegyünk:</p>
+          <ul>
+            <li>Pontos pricing-modellek (S/M/L csomagok)</li>
+            <li>A régi LinkedIn + e-mail scriptjeid újrafelhasználása</li>
+            <li>Brand: új név vagy a meglévő wellness-projekt branding</li>
+            <li>Stripe vs Barion (ÁFA, könyvelés, EU-EUR rule)</li>
+            <li>Founder-dash + ügyfél-dash</li>
+          </ul>
+          <p>Ezen a sessionön <strong>te csak hallgatsz</strong> — én viszek mindent végig, és a végén egy 1-pageres döntési-jegyzetet adok.</p>
+        </div>
+      </details>
+
+      <div class="tool-meta">
+        <span class="tool-meta-pill">Build idő: <strong>~30-50 óra</strong></span>
+        <span class="tool-meta-pill">Setup: <strong>280 e Ft + havi 8 e</strong> · vagy <strong>15% rev-share</strong></span>
+        <span class="tool-meta-pill">Build: <strong>4-6 hét</strong></span>
+        <span class="tool-meta-pill">A te dolgod: <strong>1× 90 perces session</strong></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 04 — A SORREND ÉS A KÖLTSÉG -->
+<section class="reveal">
+  <div class="section-num">04 — A sorrend és a költség</div>
+  <h2 class="section-title">Mit, mikor, <em>mennyiért.</em></h2>
+  <p class="section-sub">Mind a három különálló döntés. Bármelyiket kihagyhatod, sorrendet cserélhetünk, vagy csak az elsőt visszük végig 2 hetes próbaként.</p>
+
+  <div class="offer-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Eszköz</th>
+          <th>Idő</th>
+          <th>Költség Te oldalon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>i. Hosting Health-Pásztor<span class="sub">passzív monitor + heti e-mail</span></td>
+          <td>3-5 nap beüzemelés</td>
+          <td><span class="free">2 hét próba · 0 Ft</span></td>
+        </tr>
+        <tr>
+          <td>ii. Cégeid 1 képben<span class="sub">hétfő reggeli briefing 9 cégről</span></td>
+          <td>3-4 hét build</td>
+          <td><span class="gold-tag">90 e + havi 12 e</span> · vagy <span class="gold-tag">havi 18 e all-in</span></td>
+        </tr>
+        <tr>
+          <td>iii. Wellness Self-Serve<span class="sub">prepaid SaaS + auto-pipeline</span></td>
+          <td>4-6 hét build</td>
+          <td><span class="olive-tag">280 e + havi 8 e</span> · vagy <span class="olive-tag">15% rev-share / 12 hó</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot bronze">i</div>
+      <div class="tl-content">
+        <h4>Hét 1-2 — Hosting próba</h4>
+        <p>Beüzemeljük az első verziót, megkapod 2× a heti e-mailt. Eldöntjük, hogy a jelenlegi admin reaktív munkájának 60-80%-a ezzel kiváltható-e.</p>
+        <span class="effort">Te: 30 perc input · én: 8-10 óra</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot gold">ii</div>
+      <div class="tl-content">
+        <h4>Hét 3-6 — Cégeid 1 képben</h4>
+        <p>Ha a Hosting-pásztor után úgy érzed, hogy ez a workflow neked menő, építjük a hétfő reggeli briefinget. Te csak 2 sessionön ülsz át — a többit csendben csinálom.</p>
+        <span class="effort">Te: 2× 1 óra · én: 12-15 óra</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot olive">iii</div>
+      <div class="tl-content">
+        <h4>Hét 7-12 — Wellness Self-Serve</h4>
+        <p>Ez a nagy álom — csak akkor kezdjük, ha az i. és ii. után még mindig benne vagy. <strong>Nincs nyomás</strong>: ha 6 hónap múlva érkezel rá, akkor 6 hónap múlva. Az architektúra-tervet bármikor át tudom adni.</p>
+        <span class="effort">Te: 1× 90 perc · én: 30-50 óra</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — HOSSZÚ TÁVÚ ÖTLETEK -->
+<section class="reveal futures-section">
+  <div class="section-num">05 — Ami még szóba jöhet</div>
+  <h2 class="section-title">Öt további irány — <em>egy bővebb listából.</em></h2>
+  <p class="section-sub">Ezeket nem javaslom <em>most</em>, de a fejedbe akarom rakni — hátha valami megfog. Mind a 9 cégre építve, mind passzív Te-felé.</p>
+
+  <div class="futures">
+
+    <details class="fut">
+      <summary>
+        <span class="fut-ico">📦</span>
+        <span class="fut-label">JYSK SK + AT — új ország benyitás</span>
+        <span class="fut-tease">a meglévő rendszerre, plusz 1-2 ország</span>
+      </summary>
+      <div class="acc-body">
+        <p>A jelenlegi 4 ország (HU/SK/AT/SI/HR) felépítése után újabb ország-zóna benyitása <strong>5-10× kisebb</strong> munka mint az első. A dán központ ha igényelné, vagy te keresnéd a JYSK-en kívül egy partnert, néhány hét beüzemelés.</p>
+        <p><strong>ROI</strong>: ha JYSK-szerű partner, ~10-15% bevétel-növekedés azonos infóra.</p>
+      </div>
+    </details>
+
+    <details class="fut">
+      <summary>
+        <span class="fut-ico">🏠</span>
+        <span class="fut-label">Ingatlan — auto-flag rendszer</span>
+        <span class="fut-tease">heti fél óra helyett 5 perc</span>
+      </summary>
+      <div class="acc-body">
+        <p>A haverodnak épülő autó-flag rendszer mintájára: a saját ingatlan-flow-dat <strong>te-felé passzív</strong> verzióvá alakítjuk. Heti scrape, ha a paramétereken belüli ajánlat esik be, e-mail. Egyébként csend.</p>
+        <p>Pont olyan, mint a domain-flippelő scriptjeid — csak ingatlanra. <strong>Bursty time</strong>-okat tudja kompenzálni.</p>
+      </div>
+    </details>
+
+    <details class="fut">
+      <summary>
+        <span class="fut-ico">🧮</span>
+        <span class="fut-label">Régi → új task manager migráció</span>
+        <span class="fut-tease">script ami egyszer megcsinálja</span>
+      </summary>
+      <div class="acc-body">
+        <p>Te magad mondtad, hogy a régi task manager-ből <strong>még nem hoztad át</strong> a régi ismétlődőket — és külön task-od van, hogy időnként ránézz. Ez egy egyszeri build (~3-4 óra), és felszabadítja a kettős workflow terhét.</p>
+        <p>Nem ROI-elsődleges, de <strong>mentális tehermentesítés</strong> erős.</p>
+      </div>
+    </details>
+
+    <details class="fut">
+      <summary>
+        <span class="fut-ico">🎯</span>
+        <span class="fut-label">Cégvásárlás — auto-deal radar</span>
+        <span class="fut-tease">ami illik a profilodra</span>
+      </summary>
+      <div class="acc-body">
+        <p>Azt mondtad: <em>„keresek olyan céget, amit megvásárolhatok — hagyományos, működő, alkalmazott nélküli/kevés alkalmazottal, az automatizációs tudásom hasznosulhasson."</em> Ez egy konkrét profil — kb. heti 1× scrape céges adatbázisokon (e-cégjegyzék, OPTEN, alvó-cég lista) + e-mail neked, ha valami illeszkedik.</p>
+        <p><strong>ROI</strong> nehezen számolható, de hosszú távon megéri — eddig ezek a vásárlások hozták az eddigi szatellit-cégeidet.</p>
+      </div>
+    </details>
+
+    <details class="fut">
+      <summary>
+        <span class="fut-ico">📱</span>
+        <span class="fut-label">Wellness „premium" csatorna</span>
+        <span class="fut-tease">amit eddig egy szélsz csinált</span>
+      </summary>
+      <div class="acc-body">
+        <p>Ha a Wellness Self-Serve elindul — egy második csatorna a <em>magasabb-fizető</em> ügyfeleknek (csomag 800k-1.2M/hó), ahol egy AI-asszisztens <strong>előzetes felmérést</strong> csinál (formon, nem hívással), és a pipeline csak akkor indul, ha az ügyfél tényleg illik a TA-ba.</p>
+        <p>Ez Tier 2.5 — nem külön projekt, hanem a Self-Serve evolúciója.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <p class="futures-note">Ezek <em>opcionálisak</em> — egyiket se kell beleígérnünk. De ha valami megfog, hozok rá konkrét tervet.</p>
+</section>
+
+<!-- 06 — CTA -->
+<section class="reveal">
+  <div class="section-num">06 — Ha bármi megfog</div>
+
+  <div class="cta-section">
+    <h2>Egy mondat <em>elég.</em></h2>
+    <p>Ha a Hosting-pásztor próba neked is logikus — egy „ok, kezdjünk" elég. 24 órán belül kapod a 30 perces input-űrlapot, 5 napon belül futnak az első ellenőrzések.</p>
+    <div class="cta-row">
+      <a class="cta-btn primary" href="mailto:zsoltipi@gmail.com?subject=Oli%20-%20Hosting%20Health-P%C3%A1sztor%20pr%C3%B3ba&body=Szia%20Zsolt%2C%0A%0AKezdj%C3%BCnk%20a%202%20hetes%20Hosting-p%C3%A1sztor%20pr%C3%B3b%C3%A1val.%0A%0A%C3%9Cdv%2C%0AOli">
+        <span class="ico">→</span> Kezdjük a Hosting-próbát
+      </a>
+      <a class="cta-btn ghost" href="mailto:zsoltipi@gmail.com?subject=Oli%20-%20K%C3%A9rd%C3%A9sek%20a%20javaslatra">
+        <span class="ico">?</span> Kérdésem van
+      </a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="sig">— Zsolt</div>
+  <div class="small">
+    zsoltipi@gmail.com · +36 70 684 0031<br>
+    Készült <strong>Olinak</strong> személyesen, 2026.05.10. · 8 perc olvasási idő · DRAFT v.1<br>
+    Forrás: a 2026.05.09-i hangüzenet kérdésenkénti vissza-olvasása + a 2026.05.11. hétfői meeting előtti pre-think
+  </div>
+</footer>
+
+<script>
+// Scroll progress bar
+(function(){
+  const bar = document.getElementById('scrollProgress');
+  if(!bar) return;
+  let raf = 0;
+  function update(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = max > 0 ? (scrolled / max * 100) + '%' : '0%';
+    raf = 0;
+  }
+  window.addEventListener('scroll', () => { if(!raf) raf = requestAnimationFrame(update); }, { passive: true });
+  update();
+})();
+
+// Reveal-on-scroll
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  els.forEach(el => io.observe(el));
+})();
+
+// Tab switching for demos
+(function(){
+  document.querySelectorAll('.demo-tabs').forEach(tabGroup => {
+    const buttons = tabGroup.querySelectorAll('.tab-btn');
+    const demoBlock = tabGroup.parentElement;
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const prefix = targetId.split('-')[0]; // t1, t2, t3
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const allPanes = demoBlock.querySelectorAll('.' + prefix + '-pane');
+        allPanes.forEach(p => {
+          p.style.display = p.getAttribute('data-pane') === targetId ? '' : 'none';
+        });
+        // Re-run terminal line animation if terminal pane
+        const activePane = demoBlock.querySelector('[data-pane="' + targetId + '"]');
+        if(activePane){
+          const lines = activePane.querySelectorAll('.line');
+          lines.forEach(l => l.classList.remove('visible'));
+          lines.forEach((l, i) => setTimeout(() => l.classList.add('visible'), 50 + i * 60));
+        }
+      });
+    });
+  });
+
+  // Initial terminal animation on load
+  document.querySelectorAll('.term-body').forEach(body => {
+    const visible = body.querySelector('[data-pane]:not([style*="display:none"]) .line, .line');
+    const lines = body.querySelectorAll('[data-pane]:not([style*="display:none"]) .line');
+    const target = lines.length ? lines : body.querySelectorAll('.line');
+    target.forEach((l, i) => setTimeout(() => l.classList.add('visible'), 200 + i * 60));
+  });
+})();
+</script>
+</body>
+</html>
