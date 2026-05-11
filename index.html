@@ -407,6 +407,7 @@ footer.doc-foot a{color:var(--accent)}
       <li><strong>Claude-tutorial · ne feltételezzen, kérdezzen vissza</strong> — magad mondtad <em>„olyan, mintha megadtam volna 20 másik paramétert is, mert tipikusan jár ahhoz, de nálam nem"</em>. <strong>Letölthető cheat-sheet (8 oldal MD/PDF), 0 Ft, ~30 perc te-idő.</strong></li>
     </ol>
     <p style="margin-top:8px;font-size:13.5px;color:var(--text-soft)">A korábbi Cégeid-1-képben + Wellness Self-Serve <strong>kikerült</strong> — előbbinél te magad mondtad „elég volt, mehetnének jobban", utóbbi pedig félreértés volt mindkét oldalon (lásd §6).</p>
+    <p style="margin-top:6px;font-size:13.5px;color:var(--text-soft)"><strong>Plus opcionális 4. lépés</strong> (2-3 hét múlva ha bevál a saját brain-jeink): <strong>2-rétegű SmileStone Second Brain</strong> · <em>founder-szint</em> (csak Oli + Peti + Zsolt) + <em>team-szint</em> (egész csapat). Részletek §3 utolsó drilldown + §10 D akció.</p>
   </div>
 </section>
 
@@ -765,15 +766,48 @@ footer.doc-foot a{color:var(--accent)}
       </details>
 
       <details>
-        <summary>Közös ötletelés — opcionális, ha kedved van <span class="chip accent" style="margin-left:auto">opcionális · win-win</span></summary>
+        <summary>Közös SmileStone Second Brain · 2-rétegű · founder + team <span class="chip accent" style="margin-left:auto">opcionális · win-win</span></summary>
         <div class="body">
-          <p>Self-service alap, de ha valamikor szívesen <strong>közösen tanulnánk</strong> a legjobb second brain-használatot (pl. constitution-design, prompt-pattern, ingest-flow), én is ezt csinálom és <em>tök kíváncsi vagyok mit hozol ki belőle</em>. Pár szabad opció:</p>
+          <p>Ha a saját Brain-ed bevál, a következő lépés egy <strong>közös SS Second Brain</strong> — de NEM egy közös vault mindenkinek. <strong>Két különálló brain, hozzáférés-szinttel:</strong></p>
+
+          <table class="tbl">
+            <thead><tr><th>Brain</th><th>Tartalom</th><th>Ki látja</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Founder brain</strong><br><code>ss-founder-brain</code></td>
+                <td>stratégia · partner-deal-ek · pénzügyi áttekintés · vízió · pricing-döntések · M&amp;A · invesztor-jegyzetek · iparági térkép · bizalmas customer-feedback</td>
+                <td><span class="chip accent">Oli</span> <span class="chip accent">Peti</span> <span class="chip accent">Zsolt</span></td>
+              </tr>
+              <tr>
+                <td><strong>Team brain</strong><br><code>ss-team-brain</code></td>
+                <td>customer-feedback (nem-bizalmas) · fogtechnikai domain-tudás · support-tudásbázis · bug-tracking · deploy-workflow · onboarding-docs · feature-spec-ek · interna­l how-to</td>
+                <td>az egész csapat: <span class="chip accent">Oli</span> <span class="chip accent">Peti</span> <span class="chip accent">Zsolt</span> <span class="chip">Szente</span> <span class="chip">Berni</span> <span class="chip">Pepe</span> <span class="chip">Árni</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top:10px"><span class="lbl">a logika</span> A founder-ek (3 fő) <strong>mindkét brain-t</strong> behúzzák a saját Claude Code session-jükbe — kérdés esetén mindkettőből válasz jön. A többiek csak a team brain-t látják. Senki sem érez kihagyva, de a stratégiai szintű döntések védve maradnak.</p>
+
+          <p><span class="lbl">tech megvalósítás</span></p>
           <ul>
-            <li><strong>Közös 30 perces nézés — bármikor, ad-hoc.</strong> Slack huddle-ben mutatjuk egymásnak a saját vault-unk struktúráját, mit hogyan állítottunk be, mi vált be / mi nem. <em>Nem előadás, nem session — kíváncsiskodás.</em></li>
-            <li><strong>Közös SmileStone Second Brain — ha értelmesnek tűnik később.</strong> Az SS-csapat (Peti, Szente, Berni, Pepe, Árni, én, te) közösen épít egy <em>team brain</em>-t: customer-feedback, fogtechnikai domain-tudás, partner-deal-jegyzetek, support-tudásbázis, internal docs. Egy közös vault, mindenki olvashat, mindenki bővít. Ez SS-szinten 1-2 hónapnyi munkával 10× gyorsabb döntésre képesítene minket — és <strong>te és én lennénk a builder-ek</strong>. Ha bevál a saját Brain-ed, ez a következő lépés.</li>
-            <li><strong>Heti / kétheti 30 perces SS-szellem-sport.</strong> Ahol megosztjuk mit tanultunk a saját Brain-ünkből, mi vált be, mi nem. Nem kötelező, csak akkor ha mindkettőnknek van rá szabad ideje.</li>
+            <li><strong>2 privát GitHub repo</strong> · <code>ss-founder-brain</code> (3 collaborator) · <code>ss-team-brain</code> (7 collaborator) · GitHub Free elég</li>
+            <li><strong>Obsidian vault</strong> mindenkinek lokálisan, git clone-nal szinkronizálva (daily auto-push)</li>
+            <li><strong>Founder gépein 2 vault</strong> · <code>~/ss-founder-brain/</code> + <code>~/ss-team-brain/</code> · a Claude Code mindkettőt látja</li>
+            <li><strong>Constitution-fájl külön mindkettőre</strong> — founder: stratégiai elvek; team: support-handbook + dev-policies</li>
+            <li><strong>Claude Standard licenszek</strong> az SS-előfizetésen át — 7 fő × 0 USD/hó (már fedezve)</li>
+            <li><strong>Privátság</strong>: a founder-vault sosem kerül a team-vault-ba. A Claude Code agent <em>tudja</em> melyik fájl honnan jön, és ennek megfelelően kontextusozza a válaszait.</li>
           </ul>
-          <p style="margin-top:8px"><strong>Egyik sem kötelez semmire.</strong> Ha azt mondod „köszi, magamban haladok" — tök oké, akkor magamban haladsz, és ha valami nem világos, Slack DM-en kérdezel. Ha azt mondod „beszéljünk gyakran erről" — szuper, csapunk egy informális ritmust.</p>
+
+          <p style="margin-top:8px"><span class="lbl">erőforrás</span> Setup ~10 ó össz (7 fő × 90 perc, de párhuzamosan megy). <strong>0 Ft fix költség.</strong> Opc. Obsidian Sync 4 USD/hó × 3 founder (mobil-elérés) — csak ha kell.</p>
+
+          <p><span class="lbl">mire jó konkrétan</span></p>
+          <ul>
+            <li><em>Founder-kérdés</em>: <code>„A Gróf Dental-os partner-deal alapján mit tervezünk a Multi Smile-lal?"</code> — válasz csak a founder-vault-ból (stratégia, M&amp;A, pricing).</li>
+            <li><em>Team-kérdés</em>: <code>„Berni hogyan oldotta meg a legutóbbi Crisp-customer-feedback-et a 3D-szkenner-hibára?"</code> — válasz a team-vault-ból (support, bug-tracking).</li>
+            <li><em>Founder-szintű cross-kérdés</em>: <code>„A team-szintű customer-feedback alapján melyik stratégiai irányba mozduljunk a 2026 H2-ben?"</code> — válasz mindkettőből, csak Oli/Peti/Zsolt látja.</li>
+          </ul>
+
+          <p style="margin-top:8px"><strong>Sorrend:</strong> először a saját Brain-jeink (Oli, Peti, Zsolt) jönnek létre (§3 A akció). Ha mindhárom műxik (~2-3 hét), akkor felépítjük a 2-rétegű SS-brain-t. <em>Nem kötelez semmire.</em> Ha azt mondod „köszi, magamban", úgy is OK — a saját Brain-ed magától hasznos.</p>
         </div>
       </details>
 
@@ -1172,7 +1206,12 @@ delegálható (Mami / Géci L. / Salesolo csapat),
   </p>
 
   <div style="margin-top:18px;padding:14px 16px;background:var(--accent-soft);border-radius:5px;border-left:3px solid var(--accent);font-size:14px;line-height:1.6">
-    <strong style="color:var(--accent-deep)">Plus · ami nekem fontos:</strong> ha kedved van, szívesen <strong>közösen tanulnánk</strong> a legjobb second brain-használatot (saját brain-jeinket megmutatjuk, mi vált be / mi nem). Vagy később építhetnénk egy <strong>közös SmileStone Second Brain-t</strong> a csapatnak — Peti, Szente, Berni, Pepe, Árni + te és én közös vault. Ez SS-szinten 1-2 hónap alatt 10× gyorsabb döntéseket adna. <em>Nem most, nem kötelez — csak ott van mint közös következő lépés ha tetszik.</em>
+    <strong style="color:var(--accent-deep)">Plus · ami nekem fontos:</strong> ha kedved van, szívesen <strong>közösen tanulnánk</strong> a legjobb second brain-használatot (saját brain-jeinket megmutatjuk, mi vált be / mi nem). A nagy közös lépés a <strong>2-rétegű SmileStone Second Brain</strong>:
+    <ul style="margin:8px 0 8px 22px">
+      <li><strong>Founder brain</strong> · stratégia, partner-deal-ek, pénzügy, M&amp;A · csak <span class="chip accent">Oli</span> <span class="chip accent">Peti</span> <span class="chip accent">Zsolt</span> látja</li>
+      <li><strong>Team brain</strong> · customer-feedback, fogtechnikai domain, support, dev-handbook · az egész csapat látja</li>
+    </ul>
+    Founderek mindkettőt használják, a team csak az alsót. Részletek: §3 → „Közös SmileStone Second Brain · 2-rétegű" drilldown. <em>Nem most, nem kötelez — csak ott van mint közös következő lépés ha tetszik. Sorrendben: előbb a saját brain-jeink (mindhárom founder), aztán a 2-rétegű csapat-szintű.</em>
   </div>
 </section>
 
@@ -1226,16 +1265,22 @@ delegálható (Mami / Géci L. / Salesolo csapat),
   </details>
 
   <details>
-    <summary><strong>D · Közös ötletelés / SS team brain · ha kedved van</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">30 perc / hét vagy ad-hoc · 0 Ft · opcionális</span></summary>
+    <summary><strong>D · Közös tanulás + 2-rétegű SS Second Brain</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">30 p / hét ad-hoc · 2-3 hét múlva · 0 Ft · opcionális</span></summary>
     <div class="body">
       <table class="tbl">
-        <tr><td class="label">mit teszünk</td><td>Heti / kétheti 30 perc Slack huddle vagy DM-jegyzetváltás: mit tanultunk a saját Brain-ünkből, mi vált be / mi nem, mit változtatnánk a constitution-on. Plus megfontolásra: <strong>közös SmileStone Second Brain</strong> — Peti, Szente, Berni, Pepe, Árni + te + én közös vault az SS-tudásra (customer-feedback, fogtechnikai domain, partner-deal-ek, support-tudásbázis). SS-szinten 1-2 hónap, közös tulajdon, közös builder-szerep.</td></tr>
-        <tr><td class="label">mit nyersz</td><td>Második fülpár a saját Brain-ed kalibrálására. Plus ha bevál: SS-szinten 10× gyorsabb döntések közös tudás-bázisból.</td></tr>
-        <tr><td class="label">mit nyerek én</td><td>Második fülpár az enyémre. <em>Tök kíváncsi vagyok mit hozol ki belőle.</em> Közösen tanulás = mindkettőnknek gyorsabb.</td></tr>
-        <tr><td class="label">timing</td><td>Csak ha kedved van. Nem kötelez semmire. Lemondhatod bármikor egy „köszi, magamban haladok"-kal.</td></tr>
-        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 30 perc / alkalom, csak amikor te akarod</td></tr>
+        <tr><td class="label">1. fázis · közös tanulás</td><td>Heti / kétheti 30 perc Slack huddle: te + Peti + én megosztjuk mit tanultunk a saját Brain-ünkből, mi vált be / mi nem, mit változtatnánk a constitution-on. <em>Nem előadás, nem session — kíváncsiskodás.</em> Csak amikor mindhárman ráérünk.</td></tr>
+              <tr><td class="label">2. fázis · 2-rétegű SS-brain</td><td>Ha mindhárom founder-brain (Oli + Peti + Zsolt) 2-3 hete bevál, felépítjük a közös rendszert:
+                <ul style="margin:4px 0 4px 18px">
+                  <li><strong><code>ss-founder-brain</code></strong> · stratégia, partner-deal, pénzügy, M&amp;A — csak <span class="chip accent">Oli</span> <span class="chip accent">Peti</span> <span class="chip accent">Zsolt</span></li>
+                  <li><strong><code>ss-team-brain</code></strong> · support, dev, customer-feedback, fogtechnikai domain — az egész csapat (Szente / Berni / Pepe / Árni is)</li>
+                </ul>
+                A founderek mindkettőt használják, a team csak az alsót.</td></tr>
+        <tr><td class="label">mit nyersz</td><td>SS-szinten 10× gyorsabb döntések közös tudás-bázisból. Bizalmas stratégiai szint védve. A csapatnak átláthatóság a saját szintjén.</td></tr>
+        <tr><td class="label">setup · 2. fázis</td><td>2 GitHub privát repo · 7 fő × ~90 perc Windows-install · 2 constitution-fájl megírása közösen Oli + Peti + Zsolt-tal · daily auto-push git-szinkronra</td></tr>
+        <tr><td class="label">költség</td><td>0 Ft. Claude Standard licenszek az SS-előfizetésen át. GitHub Free elég. Opc. Obsidian Sync 4 USD/hó × 3 founder, ha mobilra is kell.</td></tr>
+        <tr><td class="label">timing</td><td>1. fázis bármikor. 2. fázis csak miután mindhárom founder-brain bevál (2-3 hét múlva). <strong>Nem kötelez.</strong></td></tr>
       </table>
-      <p style="margin-top:8px"><strong>Ez nekem fontos — de nem neked kötelező.</strong> Ha azt mondod „köszi, magamban", azt is teljesen elfogadom — a fenti A/B/C ettől függetlenül megy. Ha azt mondod „beszéljünk gyakran", szuper.</p>
+      <p style="margin-top:8px"><strong>Ez nekem fontos — de nem neked kötelező.</strong> Ha azt mondod „köszi, magamban", azt is teljesen elfogadom. Ha azt mondod „beszéljünk gyakran" — szuper.</p>
     </div>
   </details>
 
