@@ -400,11 +400,11 @@ footer.doc-foot a{color:var(--accent)}
   <div class="s-num">§ 0 · TL;DR</div>
   <div class="s-title">Egy bekezdésben <small>v.2 · meeting után frissítve</small></div>
   <div class="tldr">
-    A 11-i meetingen kiderült: a maradék 10% nagyrészt megvan (hosting magad csinálod AI-jal, ismétlődő kézimunka már szétoszlott). A maradék <strong>egy</strong> alacsonyan csüngő gyümölcs van — magad mondtad ki:
+    A 11-i meetingen kiderült: a maradék 10% nagyrészt megvan (hosting magad csinálod AI-jal, ismétlődő kézimunka már szétoszlott). A maradék <strong>egy</strong> alacsonyan csüngő gyümölcs van — magad mondtad ki. <strong>Mindhárom self-service — Windows-on, a saját ütemedben, 0 Zsolt-óra.</strong>
     <ol>
-      <li><strong>Second Brain · Karpathy-pattern</strong> — magad mondtad <em>„fel van írva a taszkba, hogy erről többet olvassak. Tök alacsonyan csüngő gyümölcs"</em>. Obsidian + Claude Code skill, lokális. <strong>Setup 4-8 ó, ~3-8 USD/hó.</strong></li>
-      <li><strong>Hosting · admin-mentes szint</strong> — a célod, hogy <em>„adminisztratív szinten ne kerüljön hozzá ember"</em>. Te magad csinálod, én csak <strong>pair-prog support</strong> ha akarod. <strong>Rugalmas, csere-alapon.</strong></li>
-      <li><strong>Claude-tutorial · ne feltételezzen, kérdezzen vissza</strong> — magad mondtad <em>„olyan, mintha megadtam volna 20 másik paramétert is, mert tipikusan jár ahhoz, de nálam nem"</em>. <strong>1 ó session, 0 Ft.</strong></li>
+      <li><strong>Second Brain · Karpathy-pattern</strong> — magad mondtad <em>„fel van írva a taszkba, hogy erről többet olvassak. Tök alacsonyan csüngő gyümölcs"</em>. Obsidian + Claude Code + skill, lokális Windows-on. <strong>Setup ~90 perc te-idő, 0 Ft</strong> (Claude Standard licensszed az SS-előfizetésből = 0 USD/hó token).</li>
+      <li><strong>Hosting · admin-mentes szint</strong> — a célod, hogy <em>„adminisztratív szinten ne kerüljön hozzá ember"</em>. Te magad csinálod, ehhez egy <strong>kérdés-bank + reference pack</strong>-ot adok le neked. <strong>Rugalmas, Slack DM-en ha elakadnál.</strong></li>
+      <li><strong>Claude-tutorial · ne feltételezzen, kérdezzen vissza</strong> — magad mondtad <em>„olyan, mintha megadtam volna 20 másik paramétert is, mert tipikusan jár ahhoz, de nálam nem"</em>. <strong>Letölthető cheat-sheet (8 oldal MD/PDF), 0 Ft, ~30 perc te-idő.</strong></li>
     </ol>
     <p style="margin-top:8px;font-size:13.5px;color:var(--text-soft)">A korábbi Cégeid-1-képben + Wellness Self-Serve <strong>kikerült</strong> — előbbinél te magad mondtad „elég volt, mehetnének jobban", utóbbi pedig félreértés volt mindkét oldalon (lásd §6).</p>
   </div>
@@ -666,17 +666,27 @@ footer.doc-foot a{color:var(--accent)}
       </table>
 
       <details open>
-        <summary>Mit telepítünk — 1 órás setup lépésenként</summary>
+        <summary>Mit telepítesz — 90 perc, Windows, self-service</summary>
         <div class="body">
+          <p><span class="lbl">elv</span> Self-service — magad végigmegy rajta. Én nem kellek hozzá, csak ha valami nem világos. Egy 4-pontos teendő-lista 90 perces vállalási idővel:</p>
           <ol>
-            <li><strong>Obsidian</strong> (10 p) — <a href="https://obsidian.md">obsidian.md</a>, MacOS. Free. Nyitsz egy vault-ot pl. <code>~/oli-brain/</code>.</li>
-            <li><strong>Claude Code</strong> (10 p) — <code>npm install -g @anthropic-ai/claude-code</code>. Kell hozzá Claude Pro vagy API kulcs.</li>
-            <li><strong>Second-brain skill</strong> (5 p) — <code>npx skills add NicholasSpisak/second-brain</code>. Wizard végigvezet (vault név, lokáció, domain).</li>
-            <li><strong>Constitution-fájl</strong> (15 p) — együtt megírjuk a <code>00-constitution.md</code>-t. Ide: heti rutinok, energia-mgmt elvek, „mit nem szabad átírni", task-prioritás-szabályok.</li>
-            <li><strong>Első seed</strong> (15 p) — beraksz 3-5 fájlt a <code>raw/</code>-ba (8 kérdés docx, JYSK belső wiki, SS team-profilok). <code>/second-brain-ingest</code>. Megnézzük mit produkált.</li>
-            <li><strong>Tesztkérdés</strong> (5 p) — <code>„Mit tervezek a JYSK SK-AT bővítéssel?"</code>. Ha a válasz jó, élesedünk.</li>
+            <li><strong>Obsidian</strong> (10 p) — <a href="https://obsidian.md/download">obsidian.md/download</a>, <em>Windows installer</em>. Telepíted, megnyitod, <em>Create new vault</em> → pl. <code>C:\Users\Olivér\Documents\oli-brain\</code>. Free, lokális.</li>
+            <li><strong>Git for Windows</strong> (5 p) — <a href="https://git-scm.com/download/win">git-scm.com/download/win</a>. Default beállítások. Ez kell a Claude Code-nak a Bash tool-hoz.</li>
+            <li><strong>Claude Code · natív Windows</strong> (10 p) — nyiss PowerShell-t (Win + X → <em>Terminal</em> vagy <em>PowerShell</em>), futtatod:<br><pre class="sample" style="font-size:11px"><span class="key">irm https://claude.ai/install.ps1 | iex</span></pre>Egy parancsos installer. Utána <code>claude login</code> — bejelentkezel a <strong>SmileStone-i Claude Standard fiókoddal</strong> (zsolti@smilestone.hu domain alatt regisztrált, már fizetett licensz → 0 USD/hó token-fogyasztás, nem kell külön előfizetés).</li>
+            <li><strong>Second-brain skill</strong> (5 p) — PowerShell-ben, az <code>oli-brain</code> mappában:<br><pre class="sample" style="font-size:11px"><span class="key">cd C:\Users\Olivér\Documents\oli-brain</span>
+<span class="key">npx skills add NicholasSpisak/second-brain</span></pre>(Node.js kell · <a href="https://nodejs.org/">nodejs.org</a>). A wizard rákérdez vault-névre, lokációra, domain-re — válaszolj a sajátoddal.</li>
+            <li><strong>Constitution-fájl</strong> (15 p) — egy markdown-template-et adok, az <code>02 Projects/Oli – Személyes Pitch/constitution-template.md</code>-ben. Letöltöd, kitöltöd a heti 5 futás / 3 kondi / energia-mgmt szabályaiddal, beraksz a vault-be <code>00-constitution.md</code> néven. <em>Te magad írod, én csak a sablont adom.</em></li>
+            <li><strong>Első seed</strong> (30 p) — beraksz 3-5 fájlt a <code>raw/</code>-ba:
+              <ul>
+                <li>A 8 pre-think kérdés docx (a saját hangüzeneted)</li>
+                <li>A „régi belső wiki"-d hosting-anyaga (amit a meetingen említettél)</li>
+                <li>2-3 cég-leírás (akár csak a SmileStone Team Profilok md, amit én is használok)</li>
+              </ul>
+              PowerShell-ben: <code>claude</code> → <code>/second-brain-ingest</code>. ~5-10 perc futás (csendben dolgozik). Utána mész az Obsidian-ba, megnézed: entitások, koncepciók, projektek folder-ek megépültek.</li>
+            <li><strong>Első tesztkérdés</strong> (10 p) — <code>claude</code> → <code>„Mit tervezek a JYSK SK-AT bővítéssel?"</code> · vagy <code>„Mit mondtam a hosting admin-jának sorsáról?"</code>. Ha a válasz a sajátoddal egyezik, mehet élesbe.</li>
           </ol>
-          <p style="margin-top:8px"><strong>Te-oldal: ~1 óra session velem.</strong> Utána magad használod. Én ~3-5 ó-t teszek rá: felkészülés + setup utáni finomhangolás.</p>
+          <p style="margin-top:10px"><strong>Te-oldal: ~90 perc, egyedül.</strong> Bármilyen lépésnél elakadsz: <em>Slack DM-en küldj 1 mondatos kérdést</em>, válaszolok. <strong>Én-oldal: 0 ó session</strong> — csak a template + reference pack megírása (~2-3 ó, már 80%-ban kész).</p>
+          <p><span class="lbl">letölthető pack</span> A <code>oli-second-brain-pack/</code> mappában (link a következő drilldown-ban): constitution-template.md, 5 példa-prompt, troubleshooting-doc, video-screenshot-lista a 7 lépésről.</p>
         </div>
       </details>
 
@@ -710,44 +720,60 @@ footer.doc-foot a{color:var(--accent)}
       </details>
 
       <details>
-        <summary>Tech-stack komponensenként + nettó futási költség <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
+        <summary>Tech-stack + nettó futási költség <span class="chip ok" style="margin-left:auto">0 Ft</span></summary>
         <div class="body">
           <table class="tbl">
             <thead><tr><th>Komponens</th><th>Mire</th><th>Költség</th></tr></thead>
             <tbody>
-              <tr><td><strong>Obsidian</strong></td><td>markdown vault, UI</td><td class="num">0 Ft · ingyenes</td></tr>
-              <tr><td><strong>Claude Code</strong></td><td>agent · vault-író/olvasó</td><td class="num">Claude Pro 20 USD/hó VAGY pay-per-token</td></tr>
+              <tr><td><strong>Obsidian</strong></td><td>markdown vault, UI</td><td class="num">0 Ft · ingyenes (Windows)</td></tr>
+              <tr><td><strong>Git for Windows</strong></td><td>Claude Code Bash tool</td><td class="num">0 Ft · ingyenes</td></tr>
+              <tr><td><strong>Node.js</strong></td><td>npx skills install</td><td class="num">0 Ft · ingyenes</td></tr>
+              <tr><td><strong>Claude Code · natív Windows</strong></td><td>agent · vault-író/olvasó</td><td class="num">0 Ft · SS-fiókhoz tartozik</td></tr>
+              <tr><td><strong>Claude Standard licensz · SmileStone</strong></td><td>API token-fogyasztás · ingest, kérdezés</td><td class="num">0 USD/hó · már fizetett SS-előfizetés</td></tr>
               <tr><td><code>NicholasSpisak/second-brain</code></td><td>Karpathy-pattern parancsok</td><td class="num">0 · open-source MIT</td></tr>
-              <tr><td><strong>Claude API tokenek</strong></td><td>ingest + kérdezés · pay-per-token</td><td class="num">~3-8 USD/hó · közepes használat</td></tr>
-              <tr><td>Obsidian Web Clipper</td><td>web → markdown</td><td class="num">0 · ingyenes extension</td></tr>
-              <tr><td>Helyi tárhely</td><td>Mac SSD (~500MB-2GB)</td><td class="num">0 · meglévő</td></tr>
-              <tr><td>Mobil-szinkron (opc.)</td><td>iCloud / Obsidian Sync</td><td class="num">0 (iCloud) vagy 4 USD/hó (E2E-encrypted)</td></tr>
-              <tr><td>GitHub repo (vault backup)</td><td>privát git backup</td><td class="num">0 · Free / Pro acc OK</td></tr>
+              <tr><td>Obsidian Web Clipper</td><td>web → markdown</td><td class="num">0 · ingyenes Chrome extension</td></tr>
+              <tr><td>Helyi tárhely</td><td>Windows SSD (~500MB-2GB)</td><td class="num">0 · meglévő</td></tr>
+              <tr><td>Mobil-szinkron (opc.)</td><td>Obsidian Sync · E2E encrypted</td><td class="num">0 vagy 4 USD/hó (E2E, csak ha kell)</td></tr>
+              <tr><td>GitHub repo (vault backup)</td><td>privát git backup</td><td class="num">0 · GitHub free</td></tr>
             </tbody>
           </table>
-          <p style="margin-top:8px"><strong>Nettó: 0 Ft fix · ~3-8 USD/hó token-fogyasztás.</strong> Ha Claude Pro-d már megvan, 0 extra. Opcionális Obsidian Sync 4 USD/hó.</p>
+          <p style="margin-top:8px"><strong>Nettó: 0 Ft / 0 USD havonta.</strong> A Claude Standard licenszed az SS-előfizetésen keresztül már fizetve van — Cluade Code és az API-token-fogyasztás ingyenes számodra. Opcionális Obsidian Sync 4 USD/hó, ha mobilra is akarod (jegyzet, naptár — pénzügyi adatot ne).</p>
           <p><span class="lbl">alternatívák amiket elvetettem</span></p>
           <ul>
             <li><strong>Khoj</strong> — vektor DB-vel, hatalmas. Karpathy: nem kell vektor DB ehhez a mérethez. Túl bonyolult start.</li>
             <li><strong>Reor / AnythingLLM</strong> — saját UI, de Obsidian-éhoz nem ér.</li>
             <li><strong>Notion AI</strong> — cloud-only, lock-in. Te magad mondtad: „pénzügyi adatokat nem viszek ki" → local-first kell.</li>
-            <li><strong>eugeniughelbur/obsidian-second-brain</strong> — 31 paranccsal, gazdagabb. <em>Evolúciós lépés</em>, most overkill.</li>
+            <li><strong>eugeniughelbur/obsidian-second-brain</strong> — 31 paranccsal, gazdagabb. <em>Evolúciós lépés</em>, most overkill — 2-3 hónap után érdemes.</li>
+            <li><strong>WSL2 + Linux Claude Code</strong> — működik, de a natív Windows installer 2025 óta stabil, nem kell WSL bonyolítást.</li>
           </ul>
         </div>
       </details>
 
       <details>
-        <summary>Önköltség Te oldalon vs. én oldalon <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
+        <summary>Önköltség Te oldalon vs. én oldalon <span class="chip ok" style="margin-left:auto">0 Zsolt-óra</span></summary>
         <div class="body">
           <table class="tbl">
-            <tr><td class="label">setup idő · én</td><td>4-8 óra (felkészülés + 1 ó session + finomhangolás)</td></tr>
-            <tr><td class="label">setup idő · te</td><td>1 ó session + 1-2 ó első seed</td></tr>
-            <tr><td class="label">heti karbantartás · te</td><td>~15 perc (raw/-ba új tételek)</td></tr>
-            <tr><td class="label">költség · te</td><td>0 Ft setup · 3-8 USD/hó Claude (vagy 0 extra ha Claude Pro már megvan)</td></tr>
-            <tr><td class="label">költség · én</td><td>4-8 ó tanulási-óra, 0 nyereség</td></tr>
+            <tr><td class="label">setup idő · te</td><td>~90 perc, egyedül, Windows-on (lásd első drilldown)</td></tr>
+            <tr><td class="label">setup idő · én</td><td>0 ó session · ~2-3 ó template-pack megírása (egyszeri, már 80%-ban kész)</td></tr>
+            <tr><td class="label">heti karbantartás · te</td><td>~15 perc (raw/-ba új tételek, ad-hoc kérdezés)</td></tr>
+            <tr><td class="label">költség · te</td><td>0 Ft setup · 0 USD/hó Claude (SS-licensszel)</td></tr>
+            <tr><td class="label">költség · én</td><td>0 Ft · 0 ó on-going</td></tr>
+            <tr><td class="label">támogatás · ha elakadsz</td><td>Slack DM-en 1 mondat — válaszolok. Nincs session, nincs lefoglalt időablak.</td></tr>
           </table>
-          <p style="margin-top:8px"><strong>Default ár: 0 Ft.</strong> Ez nem build-szolgáltatás, hanem <em>pair-prog setup + tutorial</em>. Üzlettárs vagy, én is ezt használom — közösen tanulunk.</p>
-          <p>Ha mégis pénzbeli kompenzáció kell (4-8 ó kiállítva): <strong>50 e Ft</strong> egyszeri. De javaslatom: 0 Ft, üzlettárs-szinten.</p>
+          <p style="margin-top:8px"><strong>Default ár: 0 Ft, 0 Zsolt-óra.</strong> Self-service — magad haladsz. Üzlettárs vagy és az SS-licensz fedez mindent.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Közös ötletelés — opcionális, ha kedved van <span class="chip accent" style="margin-left:auto">opcionális · win-win</span></summary>
+        <div class="body">
+          <p>Self-service alap, de ha valamikor szívesen <strong>közösen tanulnánk</strong> a legjobb second brain-használatot (pl. constitution-design, prompt-pattern, ingest-flow), én is ezt csinálom és <em>tök kíváncsi vagyok mit hozol ki belőle</em>. Pár szabad opció:</p>
+          <ul>
+            <li><strong>Közös 30 perces nézés — bármikor, ad-hoc.</strong> Slack huddle-ben mutatjuk egymásnak a saját vault-unk struktúráját, mit hogyan állítottunk be, mi vált be / mi nem. <em>Nem előadás, nem session — kíváncsiskodás.</em></li>
+            <li><strong>Közös SmileStone Second Brain — ha értelmesnek tűnik később.</strong> Az SS-csapat (Peti, Szente, Berni, Pepe, Árni, én, te) közösen épít egy <em>team brain</em>-t: customer-feedback, fogtechnikai domain-tudás, partner-deal-jegyzetek, support-tudásbázis, internal docs. Egy közös vault, mindenki olvashat, mindenki bővít. Ez SS-szinten 1-2 hónapnyi munkával 10× gyorsabb döntésre képesítene minket — és <strong>te és én lennénk a builder-ek</strong>. Ha bevál a saját Brain-ed, ez a következő lépés.</li>
+            <li><strong>Heti / kétheti 30 perces SS-szellem-sport.</strong> Ahol megosztjuk mit tanultunk a saját Brain-ünkből, mi vált be, mi nem. Nem kötelező, csak akkor ha mindkettőnknek van rá szabad ideje.</li>
+          </ul>
+          <p style="margin-top:8px"><strong>Egyik sem kötelez semmire.</strong> Ha azt mondod „köszi, magamban haladok" — tök oké, akkor magamban haladsz, és ha valami nem világos, Slack DM-en kérdezel. Ha azt mondod „beszéljünk gyakran erről" — szuper, csapunk egy informális ritmust.</p>
         </div>
       </details>
 
@@ -755,11 +781,11 @@ footer.doc-foot a{color:var(--accent)}
         <summary>Szinergia — hol van win-win <span class="chip accent" style="margin-left:auto">win-win</span></summary>
         <div class="body">
           <ul>
-            <li><strong>Én is használom</strong> — Cowork-projektemben és a saját SmileStone-i brain-emben. Veled finomhangolva mindenkinek jobb.</li>
-            <li><strong>SmileStone-szinergia</strong> — ha az SS belső tudás (Peti/Szente/Berni leírások, customer-feedback, fogtechnikai domain) is bekerül ugyanilyen second brain-be, közösen sokkal gyorsabban hozunk döntést.</li>
-            <li><strong>Másoknak ajánlás</strong> — ha bevál, Peti / Bernadett számára is ajánlható. Te a kanonikus referencia.</li>
+            <li><strong>Én is használom</strong> — Cowork-projektemben és a saját SmileStone-i brain-emben. Veled <em>párhuzamosan</em> tanulunk, esetleg közösen.</li>
+            <li><strong>SmileStone team brain</strong> — ha mindkettőnk saját brain-je bevál, együtt felépíthetjük az SS team-brain-t. Ez közös projekt, közös tulajdon — nem szolgáltatás.</li>
+            <li><strong>Másoknak ajánlás</strong> — ha az SS-csapatban bevál, Peti / Bernadett / a partner-program külső kollégái számára is ajánlható. Te + én a referencia.</li>
           </ul>
-          <p style="margin-top:8px">A te-szempontból: <strong>0 Ft kockázat, 1 ó te-időbe kerül</strong>. Ha nem jön be, semmit nem veszítesz.</p>
+          <p style="margin-top:8px">A te-szempontból: <strong>0 Ft kockázat, 90 perc te-időbe kerül</strong>. Ha nem jön be, semmit nem veszítesz, én sem.</p>
         </div>
       </details>
 
@@ -782,66 +808,58 @@ footer.doc-foot a{color:var(--accent)}
 <!-- ESZKÖZ #2 -->
 <section>
   <div class="s-num">§ 4 · Eszköz #2</div>
-  <div class="s-title">Hosting · admin-mentes szint <small>nem build · pair-prog support · 0 Ft</small></div>
+  <div class="s-title">Hosting · admin-mentes szint <small>letölthető reference pack · 0 Ft · self-service</small></div>
 
   <div class="tool">
     <div class="tool-head">
       <div class="lhs">
         <span class="id">#2.0</span>
-        <h3>Te haladsz rajta, én pair-prog módban segítek — ha kéred</h3>
+        <h3>Te haladsz rajta, én egy reference pack-ot adok</h3>
       </div>
       <div class="rhs">cél: <em>„adminisztratív szinten ne kerüljön hozzá ember"</em></div>
     </div>
     <div class="tool-body">
-      <p class="tool-pitch">A meetingen ezt mondtad: <em>„úgy haladok rá, ahogy az AI mondta. Lózsönvel iszem be a folyamataimat — először berakom az infót, ami megvan, régi belső wiki-ről, aztán rendbe teszem."</em> <strong>Vagyis NEM én építem.</strong> Te magad csinálod, AI-jal, a saját ütemedben. Ahova én tudok jönni: pair-prog session-ök, code-review, dead-end-elhárítás. <em>A célod: a hosting bizniszhez adminisztratív szinten 0 ember kell.</em></p>
+      <p class="tool-pitch">A meetingen ezt mondtad: <em>„úgy haladok rá, ahogy az AI mondta. Lózsönvel iszem be a folyamataimat — először berakom az infót, ami megvan, régi belső wiki-ről, aztán rendbe teszem."</em> <strong>NEM én építem.</strong> Te magad csinálod, AI-jal, a saját ütemedben. Amit adok: egy <em>letölthető reference pack</em> a leggyakoribb dead-end-ekhez (SSL renew patterns, IaC sablonok, ügyfél-onboarding flow vázlatok). Ha mégis elakadnál, Slack DM 1 mondat — válaszolok.</p>
 
       <table class="tbl" style="margin:12px 0">
-        <tr><td class="label">a cél</td><td>Te magad mondtad: <strong>adminisztratív szinten ne kerüljön hozzá ember</strong>. Egy 1 admint kiváltani / áthelyezni. A maradék automatizáció (uptime, SSL renew, ügyfél-onboarding) AI-jal megoldva.</td></tr>
-        <tr><td class="label">a státusz</td><td>Te haladsz vele — <em>„úgy, ahogy az AI mondta"</em>. Régi belső wiki → vault, „lózsönvel" iszod be a folyamatokat. <strong>Lassan megy, de jó irányba.</strong></td></tr>
-        <tr><td class="label">én ezt adom</td><td>Pair-prog session (90 perc / hét, ha akarod): mit kezdtél, mibe akadtál, milyen architektúra opciók vannak. <strong>Nem én csinálom helyetted, hanem gyorsítok rajtad.</strong></td></tr>
-        <tr><td class="label">mi NEM ez</td><td>Nem új build, nem új tool, nem új subscription. Nem cserélek le semmit amit már te magad csinálsz.</td></tr>
-        <tr><td class="label">mikor érdemes</td><td>Akkor, ha elakadsz egy konkrét részen (pl. „SSL auto-renew Hetzner+Cloudflare-en", „ügyfél-onboarding webhook-tervezés"). Vagy ha 2 órát töltenél ma egy döntésen és én 20 percben átlátom.</td></tr>
-        <tr><td class="label">költség</td><td>0 Ft. Üzlettárs-csere — én is tanulok rajta, te gyorsabban haladsz. SmileStone-szinten visszaforog.</td></tr>
+        <tr><td class="label">a cél</td><td>Te magad mondtad: <strong>adminisztratív szinten ne kerüljön hozzá ember</strong>. 1 admint kiváltani / áthelyezni. Uptime / SSL renew / ügyfél-onboarding AI-jal megoldva.</td></tr>
+        <tr><td class="label">a státusz</td><td>Te haladsz — <em>„ahogy az AI mondta"</em>. Régi belső wiki → vault, „lózsönvel" iszod be. Lassan megy, jó irányba.</td></tr>
+        <tr><td class="label">mit adok le</td><td>Egy letölthető <strong>hosting-reference-pack</strong> markdown-ban (~15 fájl, GitHub-on linkelve). Sablonok, példa-kódok, dead-end-térkép. Becsekoljd a vault-edbe (§3 Brain) — ott visszakereshető.</td></tr>
+        <tr><td class="label">támogatás</td><td>Slack DM-en, ha elakadnál. <strong>Nincs előre lefoglalt session</strong>, nincs naptári elköteleződés. Egy mondatos kérdés → írásos válasz.</td></tr>
+        <tr><td class="label">költség · te</td><td>0 Ft. SS-szinergia — én is csinálom a saját SS-infra-jegyzeteimnek, közös tudás-portfolio.</td></tr>
+        <tr><td class="label">költség · én</td><td>~2 ó a pack megírására (egyszeri), 0 ó on-going. Ha elakadnál, Slack-választ 1-2 percen belül.</td></tr>
       </table>
 
-      <details>
-        <summary>Konkrét pair-prog ötletek — amibe besegíthetek</summary>
+      <details open>
+        <summary>A hosting reference pack tartalma <span class="chip ok" style="margin-left:auto">letölthető</span></summary>
         <div class="body">
+          <p>Markdown-formátumban, GitHub-on tárolva, vault-be importálható (a §3 Brain-be is be tud húzni). Tartalom:</p>
           <ul>
-            <li><strong>SSL auto-renew teljes infrastruktúrán</strong> — Let's Encrypt + cert-manager / Caddy / acme.sh, monitoring overlay (te a cron + restart logikát tudod, én az edge-case-eket átnézem).</li>
-            <li><strong>Ügyfél-onboarding flow</strong> — új tárhely-ügyfél regisztrálja magát, fizet, üzemel be — ember-érintkezés nélkül. Forms + Stripe vagy Barion + cron + setup-script. Ezt te magad meg tudod tervezni; én csak code-review-zem.</li>
-            <li><strong>Renewal-tracking + auto-payment</strong> — domain + SSL + tárhely renewal-emlékeztetők, kártya-lejárat detektálás, auto-charge logic. Te tudod, hogy a számlazz.hu + Stripe integrálható; én átnézem a state-machine-t.</li>
-            <li><strong>Régi belső wiki-ből Second Brain</strong> — a #1 eszközzel összevont workflow: a hosting tudás bekerül a vault-ba, ott kérdezhető és bővíthető. Ez nem külön projekt — ugyanaz az infrastruktúra.</li>
-            <li><strong>Admin szerepköre az átálláskor</strong> — mit hagyunk neki amíg az automata megy, mit veszünk át. Beszélgetés inkább, mint kód.</li>
+            <li><strong>SSL auto-renew patterns</strong> — Let's Encrypt + acme.sh / Caddy / cert-manager · 3 sablon · cron-config · monitoring overlay · failure-fallback</li>
+            <li><strong>Ügyfél-onboarding flow</strong> — regisztráció → fizetés (Stripe / Barion) → setup-script (cloud-init / Ansible) · ember-érintkezés nélkül</li>
+            <li><strong>Renewal-tracking + auto-payment</strong> — domain + SSL + tárhely · kártya-lejárat-detektálás · auto-charge state-machine · számlázz.hu integráció</li>
+            <li><strong>Hetzner Cloud / OVH IaC</strong> — Terraform / OpenTofu sablonok új ügyfélre · 1 PR-ban beüzemelhető</li>
+            <li><strong>Monitoring stack</strong> — Healthchecks.io free tier (uptime + cron-failure detekció) · Hetzner Robot API health-poll</li>
+            <li><strong>Email pipeline</strong> — Resend + handlebars · renewal-emlékeztető / fizetési-hiba / üdvözlő-mail sablonok HU</li>
+            <li><strong>Admin szerepkör átmenete</strong> — checklist: mit hagyunk neki, mit veszünk át, mikor</li>
+            <li><strong>Dead-end-térkép</strong> — top 10 hibafajta amibe a hosting-projektedben beleeshetsz, gyors válaszokkal</li>
+            <li><strong>Régi wiki → vault import script</strong> — a §3 Brain-be migráláshoz</li>
+            <li><strong>State + audit</strong> — git-repo struktúra (renewals.md, customers.md), Karpathy-pattern alá</li>
           </ul>
+          <p style="margin-top:8px">Letöltés: <code>github.com/zsoltipi-ux/oli-hosting-pack</code> (privát repo, hozzáférést Slack-en megkapod). Update: havi 1× refresh ha valami új best-practice jön.</p>
         </div>
       </details>
 
       <details>
-        <summary>Tech-stack — amit te választasz, én reflektálok</summary>
+        <summary>Hogy használd — workflow</summary>
         <div class="body">
-          <p>Mivel te haladsz vele, a stack a te döntésed. De pár <em>opinion</em> ha érdekel:</p>
-          <ul>
-            <li><strong>Infrastructure as Code</strong> (Terraform / OpenTofu) — Hetzner + Cloudflare + Resend stb. config kódban. Új ügyfél = új PR-ban 1 sor.</li>
-            <li><strong>Cron + monitoring</strong> — Healthchecks.io (free tier) megfogja a „nem futott le" eseteket. Cron + bash script bőven elég.</li>
-            <li><strong>Email-pipeline</strong> — ügyfél-emails-eket (renewal, fizetés, hibalevek) Resend + handlebars template-tel.</li>
-            <li><strong>State + audit</strong> — mindent egy SQLite vagy egyszerű git-repo-ban (renewals.md, customers.md). A Karpathy-pattern szerint az LLM ezt olvassa, nem kell adatbázis.</li>
-            <li><strong>Hetzner Cloud API</strong> — komplet IaC-támogatás, nem kell custom integráció.</li>
-          </ul>
-          <p>Ha bemutatod amit eddig megépítettél, konkrét feedback-et adok — nem semmi általánosat.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Önköltség Te oldalon vs. én oldalon <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
-        <div class="body">
-          <table class="tbl">
-            <tr><td class="label">te oldal</td><td>amennyit te magad teszel rá (saját ütemedben)</td></tr>
-            <tr><td class="label">én oldal</td><td>~3-5 ó pair-prog / hó (max 90 perc / hét) · vagy ad-hoc kérdés-válasz · vagy 1 telefon ha elakadtál</td></tr>
-            <tr><td class="label">költség · te</td><td>0 Ft</td></tr>
-            <tr><td class="label">költség · én</td><td>0 Ft pénz · ~3-5 ó / hó figyelem-óra</td></tr>
-          </table>
-          <p style="margin-top:8px"><strong>Default: csere-alapon.</strong> Üzlettárs vagy, SmileStone-on úgy is együtt dolgozunk. Ha érzem, hogy túl sok időbe kerül és nem visszaforgós, szólok és újratárgyalunk.</p>
+          <ol>
+            <li>Klónozd a repo-t a vault-edbe: <pre class="sample" style="font-size:11px"><span class="key">cd C:\Users\Olivér\Documents\oli-brain\raw</span>
+<span class="key">git clone https://github.com/zsoltipi-ux/oli-hosting-pack</span></pre></li>
+            <li>Futtasd: <code>claude</code> → <code>/second-brain-ingest oli-hosting-pack</code>. Ez bekerül a vault-szerű struktúrába.</li>
+            <li>Kérdezd: <code>„Hogyan állítsam be a SSL auto-renew-t a Hetzner DE-1-en?"</code> — válasz a saját pack-ból + a régi belső wiki-d összeolvasva (ha az is bent van).</li>
+            <li>Ha valami nem világos: Slack DM 1 mondat, válaszolok 1-2 percen belül. Soha nem küldök szervezett session-meghívót — csak ha te kéred.</li>
+          </ol>
         </div>
       </details>
 
@@ -849,9 +867,10 @@ footer.doc-foot a{color:var(--accent)}
         <summary>Mit NEM csinálok itt — és miért</summary>
         <div class="body">
           <ul>
-            <li><strong>Nem építek monitorozó tool-t neked.</strong> Te haladsz vele, és a Karpathy-vault (§3) anyway ránéz a renewal-okra ha bekerül oda.</li>
-            <li><strong>Nem cserélem le az admint a hátad mögött.</strong> Az ő szerepe a te döntésed — én csak a tech-réteget gyorsítom.</li>
-            <li><strong>Nem ajánlok új SaaS-t StatusCake / Better Stack-szerűt.</strong> Te magad mondtad „adminisztratív szinten ne kerüljön hozzá ember" — saaS ≠ saját rendszer, és lock-in. Inkább saját scriptek.</li>
+            <li><strong>Nem építek monitorozó tool-t neked.</strong> Te haladsz vele, a §3 Brain anyway ránéz a renewal-okra.</li>
+            <li><strong>Nem cserélem le az admint a hátad mögött.</strong> Az ő szerepe a te döntésed — én csak a tech-tudást szállítom.</li>
+            <li><strong>Nem ajánlok új SaaS-t StatusCake / Better Stack-szerűt.</strong> Te magad mondtad „adminisztratív szinten ne kerüljön hozzá ember" — saaS ≠ saját rendszer, és lock-in.</li>
+            <li><strong>Nem foglalok le előre meeting-időt veled.</strong> Slack DM ad-hoc, írásos válasz. Csak akkor csapunk egy hangos sessiont, ha te kifejezetten kéred.</li>
           </ul>
         </div>
       </details>
@@ -862,25 +881,26 @@ footer.doc-foot a{color:var(--accent)}
 <!-- ESZKÖZ #3 -->
 <section>
   <div class="s-num">§ 5 · Eszköz #3</div>
-  <div class="s-title">Claude-tutorial · ne feltételezzen, kérdezzen vissza <small>1 ó session · 0 Ft</small></div>
+  <div class="s-title">Claude-tutorial · ne feltételezzen, kérdezzen vissza <small>letölthető cheat-sheet · 30 perc te-olvasás · 0 Ft</small></div>
 
   <div class="tool">
     <div class="tool-head">
       <div class="lhs">
         <span class="id">#3.0</span>
-        <h3>hogyan használd Claude-ot úgy, hogy NEKED a legjobb output-ot adja</h3>
+        <h3>8-oldalas cheat-sheet · self-service · 0 Zsolt-óra</h3>
       </div>
-      <div class="rhs">a transcript-frusztrációd megoldása</div>
+      <div class="rhs">a transcript-frusztrációd megoldása · letöltöd, beilleszted</div>
     </div>
     <div class="tool-body">
-      <p class="tool-pitch">A meetingen ezt mondtad: <em>„olyan, mintha megadtam volna 20 másik paramétert is, mert biztos tipikusan jár ahhoz a három-hoz, de nálam nem. (...) Vagy kérdezzen vissza, vagy ne feltételezzen."</em> Ez NEM Claude-bug — ez egy <strong>használat-mintázat</strong>. Az LLM default-okat hoz, mert a tömeg azt szereti. Te <em>kivétel</em> vagy, ezért explicit prompt-pattern kell. <strong>1 óra session</strong> alatt átveszek mindent, utána a default-feltételezés problémád eltűnik.</p>
+      <p class="tool-pitch">A meetingen ezt mondtad: <em>„olyan, mintha megadtam volna 20 másik paramétert is, mert biztos tipikusan jár ahhoz a három-hoz, de nálam nem. (...) Vagy kérdezzen vissza, vagy ne feltételezzen."</em> Ez NEM Claude-bug — ez egy <strong>használat-mintázat</strong>. Az LLM default-okat hoz, mert a tömeg azt szereti. Te kivétel vagy, ezért explicit prompt-pattern kell. <strong>Letölthető 8-oldalas markdown cheat-sheet</strong> — 30 perc alatt átolvasod, beilleszted a Claude-rendszereidbe.</p>
 
       <table class="tbl" style="margin:12px 0">
         <tr><td class="label">a probléma</td><td>Claude default-okat feltételez (mert a tömegnek az jó). Te ellenpélda vagy → ezért nálad fals output. „Vagy kérdezzen, vagy ne feltételezzen."</td></tr>
-        <tr><td class="label">a megoldás</td><td>3-rétegű prompt-pattern: <strong>system-prompt</strong> (te-vagy-ki) + <strong>always-ask mode</strong> (mielőtt cselekszik, listolja a feltételezéseit) + <strong>constitution-fájl</strong> (alapelvek amiket sose ír felül)</td></tr>
-        <tr><td class="label">mit kapsz</td><td>1 ó pair-prog session velem + 1 markdown-cheat-sheet 6 oldalban (PDF + Obsidian-be illeszthető) + 5 példa-prompt amit te magad használhatsz</td></tr>
-        <tr><td class="label">költség</td><td>0 Ft. Üzlettárs-csere · én is tanulok közben a saját Claude-használatomon.</td></tr>
-        <tr><td class="label">timing</td><td>Bármikor, a Second Brain setup után 1-2 héttel ideális (akkor már látod hogyan használja a vault-od)</td></tr>
+        <tr><td class="label">a megoldás</td><td>3-rétegű prompt-pattern: <strong>system-prompt</strong> (te-vagy-ki) + <strong>always-ask mode</strong> (mielőtt cselekszik, listolja feltételezéseit) + <strong>constitution-fájl</strong> (alapelvek amiket sose ír felül) — utóbbi a §3 Second Brain vault-jából jön</td></tr>
+        <tr><td class="label">mit kapsz</td><td>Letölthető 8-oldalas markdown cheat-sheet + 5 copy-paste példa-prompt + Oli-specifikus system-prompt-template + 1 video-screenshot-walkthrough (3 perc, hogyan illeszted be Claude.ai-ba / Claude Code-ba)</td></tr>
+        <tr><td class="label">te-idő</td><td>~30 perc cheat-sheet olvasás · 15 perc system-prompt beillesztés · 2-3 héten át 5 perc/nap a régi szokások átírására</td></tr>
+        <tr><td class="label">én-idő</td><td>0 ó session · ~2 ó cheat-sheet írás (egyszeri, már megkezdtem)</td></tr>
+        <tr><td class="label">költség</td><td>0 Ft. Letöltöd, használod. Ha kérdés van, Slack DM 1 mondat.</td></tr>
       </table>
 
       <details open>
@@ -961,30 +981,52 @@ delegálható (Mami / Géci L. / Salesolo csapat),
       </details>
 
       <details>
-        <summary>Csak akkor jó ez neked, ha — őszintén</summary>
+        <summary>Csak akkor érdemes letöltened, ha — őszintén</summary>
         <div class="body">
           <ul>
-            <li><strong>Hajlandó vagy 1 óra session-t letenni</strong> — élőben, screen-share, valós prompt-ok újraírása.</li>
-            <li><strong>Megnyitod hogy mit használsz</strong> (Claude Desktop / Claude.ai / Claude Code / API) — más-más beállítás kell.</li>
-            <li><strong>Van Claude Pro vagy API hozzáférésed</strong> — különben a system prompt-trükköket nem tudjuk beépíteni.</li>
-            <li><strong>Vállalod a 2-3 hetes „ráhangolódást"</strong> — a régi prompt-szokásaidat lecserélni időbe telik. Nem 1 óra alatt működik.</li>
+            <li><strong>Van Claude Standard / Pro / Code fiókod</strong> — az SS-előfizetésen át már van. ✓</li>
+            <li><strong>Van min. 30 perced átolvasni</strong> — nem ülni se, nem írni. Csak átfutni, kipróbálni.</li>
+            <li><strong>Vállalod a 2-3 hetes „ráhangolódást"</strong> — a régi prompt-szokásaidat lecserélni időbe telik. Nem 1 olvasás alatt működik.</li>
+            <li><strong>Tudsz angolul</strong> — a cheat-sheet HU, de a system-prompt-template angol (Claude jobban érti így).</li>
           </ul>
-          <p style="margin-top:8px">Ha valamelyik nem stimmel, jelezd — átalakítjuk a session formátumát.</p>
+          <p style="margin-top:8px">Ha bármelyik nem stimmel, jelezd Slack-en — átalakítom a formátumot vagy hosszabb verziót küldök.</p>
         </div>
       </details>
 
       <details>
-        <summary>Önköltség Te oldalon vs. én oldalon <span class="chip ok" style="margin-left:auto">transzparens</span></summary>
+        <summary>Letöltés + telepítés</summary>
+        <div class="body">
+          <p>A pack helye: <code>github.com/zsoltipi-ux/oli-claude-tutorial</code> (privát repo, hozzáférést Slack-en küldök).</p>
+          <p>Tartalom:</p>
+          <ul>
+            <li><code>cheat-sheet.md</code> — 8 oldal, magyar, Oli-helyzetre szabva</li>
+            <li><code>system-prompt-template.md</code> — angol, copy-paste-elhető a Claude.ai Project knowledge-be vagy Claude Code <code>CLAUDE.md</code>-be</li>
+            <li><code>examples/</code> — 5 példa-prompt (új cég-döntés, hosting fix, stratégiai döntés, „mit ne csináljak", hétfő reggeli triage)</li>
+            <li><code>walkthrough.mp4</code> — 3 perces screenshot-video, hogyan illesztsd be a Claude.ai-ba és a Claude Code-ba</li>
+            <li><code>FAQ.md</code> — 10 gyakori hiba és megoldás</li>
+          </ul>
+          <p style="margin-top:8px">Telepítés Windows-on:</p>
+          <pre class="sample" style="font-size:11px"><span class="key">cd C:\Users\Olivér\Documents\oli-brain</span>
+<span class="key">git clone https://github.com/zsoltipi-ux/oli-claude-tutorial</span>
+<span class="dim"># olvasd át a cheat-sheet.md-t, töltsd ki a system-prompt-template helyeit</span>
+<span class="dim"># másold be a Claude.ai → Projects → Project knowledge-be VAGY</span>
+<span class="dim"># tedd be ide: C:\Users\Olivér\Documents\oli-brain\CLAUDE.md</span></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>Önköltség Te oldalon vs. én oldalon <span class="chip ok" style="margin-left:auto">0 Zsolt-óra</span></summary>
         <div class="body">
           <table class="tbl">
-            <tr><td class="label">én · felkészülés</td><td>2 ó (cheat-sheet írás, példa-promptok testreszabva)</td></tr>
-            <tr><td class="label">én · session</td><td>1 ó pair-prog veled</td></tr>
-            <tr><td class="label">te · session</td><td>1 ó</td></tr>
-            <tr><td class="label">te · utánkövető</td><td>~30 perc / hét 2-3 hétig, a régi szokások lecserélésére</td></tr>
+            <tr><td class="label">én · cheat-sheet írás</td><td>2-3 ó egyszeri (már megkezdtem)</td></tr>
+            <tr><td class="label">én · ad-hoc Slack-válasz</td><td>0 ó / hó on-going, ha kérdés van</td></tr>
+            <tr><td class="label">te · letöltés + olvasás</td><td>30 perc</td></tr>
+            <tr><td class="label">te · beillesztés</td><td>15 perc</td></tr>
+            <tr><td class="label">te · utánkövető</td><td>~5 perc / nap 2-3 hétig, a régi szokások lecserélésére</td></tr>
             <tr><td class="label">költség · te</td><td>0 Ft</td></tr>
-            <tr><td class="label">költség · én</td><td>3 ó · 0 nyereség</td></tr>
+            <tr><td class="label">költség · én</td><td>0 Ft · 2-3 ó egyszeri (már SS-csapatnak is hasznos)</td></tr>
           </table>
-          <p style="margin-top:8px"><strong>Default ár: 0 Ft.</strong> A cheat-sheet és a példa-promptok egyébként nálam is hasznosak — Cowork-szinten más SmileStone-i kolléga (Peti, Berni) is tudja használni. Win-win.</p>
+          <p style="margin-top:8px"><strong>Default ár: 0 Ft, 0 session.</strong> A cheat-sheet újrahasznosítható — Peti / Berni / Cowork-projekt számára is. Win-win, self-service.</p>
         </div>
       </details>
     </div>
@@ -1069,21 +1111,21 @@ delegálható (Mami / Géci L. / Salesolo csapat),
     </thead>
     <tbody>
       <tr>
-        <td><strong>#1 Second Brain · Karpathy</strong><span class="meta">Obsidian + Claude Code skill</span></td>
-        <td class="num">4-8 ó setup · 1 hét</td>
-        <td class="num">1 ó session + 1-2 ó seed</td>
-        <td class="num"><span class="chip warn">0 Ft setup · ~3-8 USD/hó Claude</span></td>
+        <td><strong>#1 Second Brain · Karpathy</strong><span class="meta">Obsidian + Claude Code · Windows · self-service</span></td>
+        <td class="num">~2-3 ó pack megírás (egyszeri)</td>
+        <td class="num">~90 perc telepítés + seed</td>
+        <td class="num"><span class="chip warn">0 Ft · 0 USD/hó (SS-licensz)</span></td>
       </tr>
       <tr>
-        <td><strong>#2 Hosting · admin-mentes</strong><span class="meta">pair-prog support a te haladásodhoz</span></td>
-        <td class="num">~3-5 ó / hó figyelem</td>
+        <td><strong>#2 Hosting · admin-mentes</strong><span class="meta">letölthető reference pack a haladásodhoz</span></td>
+        <td class="num">~2 ó pack megírás (egyszeri)</td>
         <td class="num">amennyit te magad teszel</td>
-        <td class="num"><span class="chip">0 Ft · csere-alapon</span></td>
+        <td class="num"><span class="chip">0 Ft · self-service</span></td>
       </tr>
       <tr>
-        <td><strong>#3 Claude-tutorial</strong><span class="meta">prompt-pattern session</span></td>
-        <td class="num">3 ó (felkészülés + session)</td>
-        <td class="num">1 ó session + 30p/hét 2-3 hét</td>
+        <td><strong>#3 Claude-tutorial</strong><span class="meta">letölthető 8-oldalas cheat-sheet</span></td>
+        <td class="num">~2-3 ó cheat-sheet írás (egyszeri)</td>
+        <td class="num">30 perc olvasás + 15 perc beillesztés</td>
         <td class="num"><span class="chip accent">0 Ft</span></td>
       </tr>
     </tbody>
@@ -1108,12 +1150,12 @@ delegálható (Mami / Géci L. / Salesolo csapat),
       <tr>
         <td><strong>#1 Second Brain</strong></td>
         <td class="num">0 Ft · 0 nyereség</td>
-        <td>Saját Cowork-projektemben + SmileStone team-skill — közösen tanulunk</td>
+        <td>Saját Cowork-projektemben is használom · közös SS-team-brain ha bevál (lásd alább)</td>
       </tr>
       <tr>
-        <td><strong>#2 Hosting · support</strong></td>
-        <td class="num">0 Ft · csere-alapon</td>
-        <td>Üzlettárs-csere; SS-szinergia (Pepe / belső hosting); pair-prog tanulás</td>
+        <td><strong>#2 Hosting · reference pack</strong></td>
+        <td class="num">0 Ft · 0 nyereség</td>
+        <td>SS-infra-jegyzeteim közös tudás-portfolio · Cowork-szinten újrahasznosítható</td>
       </tr>
       <tr>
         <td><strong>#3 Claude-tutorial</strong></td>
@@ -1123,11 +1165,15 @@ delegálható (Mami / Géci L. / Salesolo csapat),
     </tbody>
   </table>
 
-  <p style="margin-top:14px;font-size:14.5px;line-height:1.6"><strong>Szabály:</strong> ha valami nem működik vagy nem hoz neked vissza idő/pénzt, <em>nem kérek érte semmit</em>. Próba mindig 2 hét, és <strong>én viselem a build-óra kockázatát</strong> — ezért lehet a #1-es ingyenes és a #3-as setup-fee nélküli rev-share.</p>
+  <p style="margin-top:14px;font-size:14.5px;line-height:1.6"><strong>Szabály:</strong> mind a 3 eszköz <strong>0 Ft, 0 Zsolt-óra session</strong>. Self-service, te magad haladsz Windows-on, a SmileStone-licenszedet használod. Én oldalon: egyszeri 6-9 ó (template-pack-ek megírása, már 80%-ban kész) — ezek SS-csapatban újrahasznosíthatóak.</p>
 
   <p style="font-size:13.5px;color:var(--text-soft);line-height:1.6;margin-top:10px">
-    A pontos komponens-árakat és önköltség-bontást a <strong>§3 (Hosting) három drilldown-paneljében nyitottam ki teljes mélységben</strong> — Vercel/Resend/Upstash/etc. komponens-szinten, plus a 3 ár-opció Te-vs-én bontásban. A §4 és §5 hasonlóan elérhető. Ha bármi nem világos, kérdezz — nem akarok rejtett számot az ajánlatban tartani.
+    Komponens-szintű árbontás minden eszköznél a saját §-jában van (Obsidian / Claude Code / Git / Node + SS-licensz token-fedezete). <strong>Ha bármi nem világos vagy elakadsz: Slack DM, 1 mondat.</strong> Soha nem küldök meeting-meghívót — csak akkor, ha te kifejezetten szeretnéd.
   </p>
+
+  <div style="margin-top:18px;padding:14px 16px;background:var(--accent-soft);border-radius:5px;border-left:3px solid var(--accent);font-size:14px;line-height:1.6">
+    <strong style="color:var(--accent-deep)">Plus · ami nekem fontos:</strong> ha kedved van, szívesen <strong>közösen tanulnánk</strong> a legjobb second brain-használatot (saját brain-jeinket megmutatjuk, mi vált be / mi nem). Vagy később építhetnénk egy <strong>közös SmileStone Second Brain-t</strong> a csapatnak — Peti, Szente, Berni, Pepe, Árni + te és én közös vault. Ez SS-szinten 1-2 hónap alatt 10× gyorsabb döntéseket adna. <em>Nem most, nem kötelez — csak ott van mint közös következő lépés ha tetszik.</em>
+  </div>
 </section>
 
 <!-- KÖVETKEZŐ LÉPÉSEK -->
@@ -1137,72 +1183,74 @@ delegálható (Mami / Géci L. / Salesolo csapat),
   <p class="s-sub">6 opció, mindegyik önálló döntés. Sorrendben ROI-szerint — fent a leggyorsabb hozadékú, lent a legmélyebb commitment. Drill-down: mennyi időt kér, mit nyersz vele, mit teszek én cserébe.</p>
 
   <details open>
-    <summary><strong>A · Second Brain setup pair-prog</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">1 ó te · 4-8 ó én · 0 Ft · ezen / jövő héten</span></summary>
+    <summary><strong>A · Second Brain · letöltés + 90 perc Windows-os self-install</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">~90 perc te · 0 ó én · 0 Ft · bármikor</span></summary>
     <div class="body">
       <table class="tbl">
-        <tr><td class="label">mit kérek tőled</td><td>1 órás session — screen-share, Mac-eden. Te a kezelőszervezet, én vezetlek lépésenként. Plus 1-2 óra utána (egyedül) az első seed (régi belső wiki, 8 kérdés docx, JYSK-tudás).</td></tr>
-        <tr><td class="label">mit nyersz</td><td><strong>Élő Karpathy-stílus Second Brain</strong> a saját Macen. 2 hét múlva tudod, érdemes-e folytatni — addigra a hétfő reggeli custom task-okat előre fel tudja dolgozni. Plus a Wikrol bekerült hosting-tudás visszakereshető.</td></tr>
-        <tr><td class="label">mit teszek én</td><td>Felkészülés (Spisak skill mélyebb ismeret, constitution-template Oli-helyzetre) + session + 1 hét utánkövető Slack-DM (ha elakadsz)</td></tr>
-        <tr><td class="label">indítás</td><td>Egy „A · kezdjük" üzenetre 24 ó-n belül kalendárium-meghívó, 3-5 napon belül a session</td></tr>
-        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 1-3 ó idő · semmi telepítve a gépedre amit nem akarsz</td></tr>
-        <tr><td class="label">kockázat én oldal</td><td>4-8 ó tanulási-óra, akkor is ha nem folytatjuk</td></tr>
+        <tr><td class="label">mit teszel</td><td>Megnyitod a §3 első drilldown-jában lévő 7-lépéses Windows-tutorial-t. Letöltöd a <code>oli-second-brain-pack</code>-ot (link Slack-en). Lépésenként végigmész — Obsidian → Git → Claude Code → skill → constitution → seed → tesztkérdés.</td></tr>
+        <tr><td class="label">mit nyersz</td><td><strong>Élő Karpathy-stílus Second Brain</strong> a saját Windows-on, 90 perc múlva. 2 hét múlva tudod, érdemes-e mélyebbre menni — addigra a hétfő reggeli custom task-okat előre fel tudja dolgozni.</td></tr>
+        <tr><td class="label">én-idő</td><td>0 ó session. A pack-ot már 80%-ban megírtam — egyszeri 2-3 ó finomhangolás Oli-helyzetre.</td></tr>
+        <tr><td class="label">indítás</td><td>Egy „A" üzenetre 1 órán belül Slack-en küldöm a privát repo-hoz a hozzáférést. Te onnantól saját ütemedben.</td></tr>
+        <tr><td class="label">támogatás</td><td>Slack DM-en ad-hoc, ha valami nem világos. 1 mondatos kérdés → írásos válasz.</td></tr>
+        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 90 perc · semmi telepítve amit nem akarsz</td></tr>
       </table>
-      <p style="margin-top:8px"><strong>Akció:</strong> egy „A · kezdjük" → kapod a kalendárium-meghívót.</p>
+      <p style="margin-top:8px"><strong>Akció:</strong> egy „A" Slack-en → kapod a pack-link-et.</p>
     </div>
   </details>
 
   <details>
-    <summary><strong>B · Claude-tutorial cheat-sheet + 1 ó session</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">1 ó te · 3 ó én · 0 Ft · A után 1-2 héttel</span></summary>
+    <summary><strong>B · Claude-tutorial cheat-sheet letöltés</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">~45 perc te · 0 ó én · 0 Ft · bármikor</span></summary>
     <div class="body">
       <table class="tbl">
-        <tr><td class="label">mit kérek tőled</td><td>1 órás screen-share session, ahol megmutatod hogyan használod most Claude-ot. Plusz 2-3 héten át 30 perc/hét a régi prompt-szokások átírására.</td></tr>
-        <tr><td class="label">mit nyersz</td><td><strong>A „mindig feltételezi a 20 másik paramétert" frusztrációd eltűnik.</strong> 5 példa-prompt + system-prompt + always-ask mode + constitution-integráció. Mostantól pontosan azt kapod amit kérsz, vagy a Claude visszakérdez.</td></tr>
-        <tr><td class="label">mit teszek én</td><td>2 ó felkészülés (te-specifikus cheat-sheet írás) + 1 ó session + 6-oldalas markdown PDF</td></tr>
-        <tr><td class="label">mikor érdemes</td><td>A Second Brain (A) setup után 1-2 héttel — akkor már van vault-od ahova a constitution-fájl beilleszkedik</td></tr>
-        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 1 ó session + 30p/hét utánkövető</td></tr>
+        <tr><td class="label">mit teszel</td><td>Letöltöd a <code>oli-claude-tutorial</code> repót. Átolvasod a 8-oldalas markdown cheat-sheet-et (30 p). Bemásolod a system-prompt-template-et a Claude.ai-ba (Projects → knowledge) vagy a Claude Code <code>CLAUDE.md</code>-jébe (15 p).</td></tr>
+        <tr><td class="label">mit nyersz</td><td><strong>A „mindig feltételezi a 20 másik paramétert" frusztrációd eltűnik.</strong> 5 copy-paste példa-prompt + Oli-helyzetre szabott system-prompt + always-ask mode + constitution-integráció. Mostantól pontosan azt kapod amit kérsz.</td></tr>
+        <tr><td class="label">én-idő</td><td>0 ó session. Egyszeri 2-3 ó cheat-sheet-írás (már megkezdtem).</td></tr>
+        <tr><td class="label">mikor érdemes</td><td>Bármikor, akár A előtt vagy után. A constitution-fájl jobban illeszkedik ha A-val kezded — de nem kötelező.</td></tr>
+        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 30 p olvasás + 15 p beillesztés + ~5 p/nap 2-3 hétig a szokások átírására</td></tr>
       </table>
-      <p style="margin-top:8px">Ha tetszik, később ugyanezt a cheat-sheet-et Peti / Bernadett számára is megosztjuk a Cowork-projekten.</p>
+      <p style="margin-top:8px">Ugyanezt Peti / Bernadett számára is megosztjuk a Cowork-projekten, ha akarod referencia-ként.</p>
     </div>
   </details>
 
   <details>
-    <summary><strong>C · Hosting pair-prog session</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">90 perc te · 90 perc én · 0 Ft · amikor akadsz</span></summary>
+    <summary><strong>C · Hosting reference pack letöltés</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">~ad-hoc · 0 ó én · 0 Ft · amikor kell</span></summary>
     <div class="body">
       <table class="tbl">
-        <tr><td class="label">mit kérek tőled</td><td>90 perces session amikor elakadsz egy konkrét hosting-tech kérdésen (SSL auto-renew, ügyfél-onboarding webhook, IaC-konvertálás, vagy a régi wiki strukturálás). Előtte 1 mondat: <em>„mibe akadtam"</em>.</td></tr>
-        <tr><td class="label">mit nyersz</td><td><strong>Ami nálad 4-6 órás dead-end lenne</strong> (mert nem ismersz egy edge-case-t vagy library-t), nálam 30 perc. Te megtartod a control-t, én csak gyorsítok.</td></tr>
-        <tr><td class="label">mit teszek én</td><td>30-60 perc felkészülés (kérdést átolvasom, 2-3 megoldás-vázlat) + 90 perc session + utánkövető Slack-DM</td></tr>
-        <tr><td class="label">mikor érdemes</td><td>Bármikor, amikor érzed hogy „ez most rohad le". Nincs határidő, nincs cron, nincs nyomás.</td></tr>
-        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 90 perc</td></tr>
+        <tr><td class="label">mit teszel</td><td>Letöltöd a <code>oli-hosting-pack</code> repót, beimportálod a §3 Brain-edbe (<code>git clone</code> a <code>raw/</code>-ba, <code>/second-brain-ingest</code>). Onnantól kérdezheted: SSL auto-renew, ügyfél-onboarding, renewal-tracking, IaC-sablonok, dead-end-térkép.</td></tr>
+        <tr><td class="label">mit nyersz</td><td><strong>Ami nálad 4-6 órás dead-end lenne</strong> egy edge-case miatt, az a vault-edben már megtalálható. Ha valami konkrétan nincs benne: Slack DM 1 mondat, válaszolok és frissítem a pack-ot.</td></tr>
+        <tr><td class="label">én-idő</td><td>0 ó session. Egyszeri ~2 ó pack-írás (legtöbb már megvan a saját SS-jegyzeteim alapján).</td></tr>
+        <tr><td class="label">támogatás</td><td>Slack DM ad-hoc. Nincs előre lefoglalt session, nincs naptári elköteleződés.</td></tr>
+        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 0 perc fix idő — csak akkor használod, amikor kell</td></tr>
       </table>
-      <p style="margin-top:8px">Ez nem előre lefoglalt session — <em>on-demand</em>. Ha 3 hónapig nem akadsz el, sosem hívlak hozzá.</p>
+      <p style="margin-top:8px">Ez nem időponthoz kötött — csak letöltöd, beimportálod, és akkor használod amikor jön a hosting-meló.</p>
     </div>
   </details>
 
   <details>
-    <summary><strong>D · 30 perc · „csak nézzük meg, érdekes-e"</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">30 perc te · 30 perc én · 0 Ft · bármikor</span></summary>
+    <summary><strong>D · Közös ötletelés / SS team brain · ha kedved van</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">30 perc / hét vagy ad-hoc · 0 Ft · opcionális</span></summary>
     <div class="body">
       <table class="tbl">
-        <tr><td class="label">mit kérek tőled</td><td>30 perces Slack huddle / Meet. Csak gyors-nézés: hogy néz ki egy Karpathy-pattern vault élőben (mutatok egy működő példát a saját setupomon)</td></tr>
-        <tr><td class="label">mit nyersz</td><td><strong>Eldöntöd, érdemes-e foglalkozni vele.</strong> Ha „nem ad érzést" — nem megyünk tovább. Ha „ez az, amit akarok" — átmegyünk A-ra.</td></tr>
-        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 30 perc · semmihez nem köteleződsz</td></tr>
+        <tr><td class="label">mit teszünk</td><td>Heti / kétheti 30 perc Slack huddle vagy DM-jegyzetváltás: mit tanultunk a saját Brain-ünkből, mi vált be / mi nem, mit változtatnánk a constitution-on. Plus megfontolásra: <strong>közös SmileStone Second Brain</strong> — Peti, Szente, Berni, Pepe, Árni + te + én közös vault az SS-tudásra (customer-feedback, fogtechnikai domain, partner-deal-ek, support-tudásbázis). SS-szinten 1-2 hónap, közös tulajdon, közös builder-szerep.</td></tr>
+        <tr><td class="label">mit nyersz</td><td>Második fülpár a saját Brain-ed kalibrálására. Plus ha bevál: SS-szinten 10× gyorsabb döntések közös tudás-bázisból.</td></tr>
+        <tr><td class="label">mit nyerek én</td><td>Második fülpár az enyémre. <em>Tök kíváncsi vagyok mit hozol ki belőle.</em> Közösen tanulás = mindkettőnknek gyorsabb.</td></tr>
+        <tr><td class="label">timing</td><td>Csak ha kedved van. Nem kötelez semmire. Lemondhatod bármikor egy „köszi, magamban haladok"-kal.</td></tr>
+        <tr><td class="label">kockázat te oldal</td><td>0 Ft · 30 perc / alkalom, csak amikor te akarod</td></tr>
       </table>
-      <p style="margin-top:8px">Akkor érdemes választanod, ha még olvasol róla és nem akarsz vakon beleugrani.</p>
+      <p style="margin-top:8px"><strong>Ez nekem fontos — de nem neked kötelező.</strong> Ha azt mondod „köszi, magamban", azt is teljesen elfogadom — a fenti A/B/C ettől függetlenül megy. Ha azt mondod „beszéljünk gyakran", szuper.</p>
     </div>
   </details>
 
   <details>
-    <summary><strong>E · Mind a 3 párhuzamos — full deal</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">3-4 ó te szétosztva · 10-15 ó én · 0 Ft · 6-8 hét</span></summary>
+    <summary><strong>E · Mind a 3 + opcionális közös</strong> <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text-faint)">~3 ó te · 0 ó én session · 0 Ft · 4-6 hét</span></summary>
     <div class="body">
       <table class="tbl">
-        <tr><td class="label">tartalom</td><td>A (Second Brain setup) + B (Claude-tutorial) + C (Hosting pair-prog on-demand)</td></tr>
-        <tr><td class="label">te idő szétosztva</td><td>1ó (A session) + 1-2ó (A első seed) + 1ó (B session) + 30p/hét × 3 hét (B utánkövető) + 90p (C ha akadsz) = ~3-4 óra · 6-8 hét alatt</td></tr>
-        <tr><td class="label">én idő</td><td>4-8ó (A) + 3ó (B) + 3-5ó (C ha kell) = 10-15 óra · 6-8 hét alatt</td></tr>
-        <tr><td class="label">költség te oldal</td><td><strong>0 Ft</strong>. Plus ~3-8 USD/hó Claude token (vagy 0 ha Claude Pro-d már van).</td></tr>
-        <tr><td class="label">mit nyersz</td><td>Élő Second Brain + magabiztos Claude-prompt-pattern + hosting-projekt gyorsítva. Plus mindezek SS-szinergiában visszaforognak.</td></tr>
-        <tr><td class="label">mit nyerek én</td><td>Üzlettárs-csere, közös tanulás. SS-szinten visszahasznosítható skill-csomag (Peti / Berni). 0 Ft pénzbeli — de a tanulás megéri.</td></tr>
+        <tr><td class="label">tartalom</td><td>A (Second Brain Windows-install) + B (Claude-tutorial cheat-sheet) + C (Hosting reference pack) — mindhárom letöltés-alapon · plusz opcionálisan D (közös ötletelés)</td></tr>
+        <tr><td class="label">te idő szétosztva</td><td>90p (A telepítés) + 45p (B olvasás + beillesztés) + ~15p (C import) + 5p/nap × 2-3 hét utánkövető = <strong>~3 óra · 4-6 hét alatt szétosztva</strong></td></tr>
+        <tr><td class="label">én idő</td><td>0 ó session · ~6-9 ó egyszeri pack-írás (mind a 3-ra · már 80%-ban kész)</td></tr>
+        <tr><td class="label">költség te oldal</td><td><strong>0 Ft.</strong> Plus 0 USD/hó Claude (SS-licensszel fedezve).</td></tr>
+        <tr><td class="label">mit nyersz</td><td>Élő Second Brain + magabiztos Claude-prompt-pattern + hosting-tudásbázis · mind a saját Windows-on, lokális, SS-licensszel.</td></tr>
+        <tr><td class="label">opc. közös</td><td>Ha kedved van, D-vel közösen tanulunk, akár team-brain-t építünk. Nem kötelez semmire.</td></tr>
       </table>
-      <p style="margin-top:8px">Akkor érdemes választanod, ha mind a 3 irány tetszik, és nem akarsz 6-8 hetet újra-döntésekre tölteni.</p>
+      <p style="margin-top:8px">Akkor érdemes választanod, ha mind a 3 irány tetszik. Sorrend nem kötött — Aatt érdemes kezdeni mert a §3 a fő wedge.</p>
     </div>
   </details>
 
@@ -1215,7 +1263,7 @@ delegálható (Mami / Géci L. / Salesolo csapat),
   </details>
 
   <p style="margin:22px 0 14px;font-size:15px;line-height:1.65;padding:14px 16px;background:var(--bg-soft);border-radius:5px;border-left:3px solid var(--accent)">
-    👉 <strong>Válasz:</strong> Slack DM · vagy <a href="mailto:zsoltipi@gmail.com?subject=Oli%20javaslat%20%E2%80%94%20A%20Hosting%20pr%C3%B3ba">zsoltipi@gmail.com</a> · <strong>egy betű elég</strong> (A / B / C / D / E / F)
+    👉 <strong>Válasz:</strong> Slack DM · vagy <a href="mailto:zsoltipi@gmail.com?subject=Oli%20javaslat%20%E2%80%94%20pack-link%20k%C3%A9rem">zsoltipi@gmail.com</a> · <strong>egy betű elég</strong> (A / B / C / D / E / F) — küldöm a privát repo-hozzáférést, te onnan magad haladsz
   </p>
 </section>
 
