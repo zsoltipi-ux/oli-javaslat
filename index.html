@@ -407,6 +407,7 @@ footer.doc-foot a{color:var(--accent)}
       <li><strong>Claude-tutorial · ne feltételezzen, kérdezzen vissza</strong> — magad mondtad <em>„olyan, mintha megadtam volna 20 másik paramétert is, mert tipikusan jár ahhoz, de nálam nem"</em>. <strong>Letölthető cheat-sheet (8 oldal MD/PDF), 0 Ft, ~30 perc te-idő.</strong></li>
     </ol>
     <p style="margin-top:8px;font-size:13.5px;color:var(--text-soft)">A korábbi Cégeid-1-képben + Wellness Self-Serve <strong>kikerült</strong> — előbbinél te magad mondtad „elég volt, mehetnének jobban", utóbbi pedig félreértés volt mindkét oldalon (lásd §6).</p>
+    <p style="margin-top:6px;font-size:13.5px;color:var(--text-soft)"><strong>Plus 2026-os kiegészítő rétegek</strong> a fő Karpathy-Wiki mellé: <strong>NotebookLM</strong> (Google · magyar audio-overview, mély-elemzés egy dokumentum felett · pl. JYSK compliance-PDF, partner-meeting hangrögzítés) + <strong>Claude Memory / Infinite Brain</strong> (Anthropic 2026.04 · perzisztens emlékezet a Claude session-jeid között, az SS-licenszedben elérhető). Részletek §3 → „A 3 brain-réteg" drilldown.</p>
     <p style="margin-top:6px;font-size:13.5px;color:var(--text-soft)"><strong>Plus opcionális 4. lépés</strong> (2-3 hét múlva ha bevál a saját brain-jeink): <strong>2-rétegű SmileStone Second Brain</strong> · <em>founder-szint</em> (csak Oli + Peti + Zsolt) + <em>team-szint</em> (egész csapat). Részletek §3 utolsó drilldown + §10 D akció.</p>
   </div>
 </section>
@@ -762,6 +763,57 @@ footer.doc-foot a{color:var(--accent)}
             <tr><td class="label">támogatás · ha elakadsz</td><td>Slack DM-en 1 mondat — válaszolok. Nincs session, nincs lefoglalt időablak.</td></tr>
           </table>
           <p style="margin-top:8px"><strong>Default ár: 0 Ft, 0 Zsolt-óra.</strong> Self-service — magad haladsz. Üzlettárs vagy és az SS-licensz fedez mindent.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>A 3 brain-réteg — mire melyik jó Olinak konkrétan <span class="chip accent" style="margin-left:auto">kiegészítik egymást</span></summary>
+        <div class="body">
+          <p>A Karpathy-Wiki nem önmagában áll — 2026-ra <strong>3 különböző brain-réteg</strong> érhető el, és <em>nem helyettesítik, hanem kiegészítik</em> egymást. Oli-helyzetére mindhárom más-más célt szolgál:</p>
+
+          <table class="tbl">
+            <thead><tr><th>Réteg</th><th>Mire való</th><th>Olinak konkrétan</th><th>Költség</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>1 · Karpathy-Wiki</strong><br><span class="meta">a §3 fő ajánlat · Obsidian + Claude Code</span></td>
+                <td>Self-updating wiki — minden tudásod (cégek, élet, projektek) egy lokális vault-ban. LLM mint librarian, te mint curator.</td>
+                <td><strong>Központi tudás-portfolio</strong>: 9 céged, ingatlan-flow, hosting-tudás, életviteli OS. Minden egyben, minden lokálisan, minden kérdezhető.</td>
+                <td class="num">0 USD/hó · SS-licensz</td>
+              </tr>
+              <tr>
+                <td><strong>2 · NotebookLM</strong><br><span class="meta">Google · cloud · 2026-os feature-set</span></td>
+                <td>Forrás-fókuszú Q&amp;A egy <em>konkrét dokumentum-csoport</em> felett. Upload: PDF / docx / hangrögzítés / video / EPUB / weboldal. Audio overview magyar nyelven. Cinematic video overview. Citation-ekkel válaszol.</td>
+                <td><strong>Egyetlen forrás mély-elemzése</strong>: pl. a 200-oldalas dán JYSK compliance-PDF feltöltése → kérdezhető magyarul. Vagy egy 2-órás partner-meeting hangrögzítése → 10 perces magyar audio-összefoglaló, ami autóban hallgatható.</td>
+                <td class="num">0 USD/hó alap · 20 USD/hó NotebookLM Pro</td>
+              </tr>
+              <tr>
+                <td><strong>3 · Claude Memory (Infinite Brain)</strong><br><span class="meta">Anthropic 2026.04 public beta · az SS-licenszedben elérhető</span></td>
+                <td>Persistent memory a Claude session-jeid között + Knowledge Base ami aktívan visszakeresi a háttér-tudást + Dreaming (Claude éjszaka átnézi a múltbeli interakcióit és javítja magát).</td>
+                <td><strong>Hosszú-távú folyamatos Claude-beszélgetés</strong> amit nem kell minden alkalommal újraindítani. A „mit beszéltünk Obi-val a JYSK-en?" 3 hónap múlva is felidézhető, csak a Claude.ai-ben kérdezel. Cloud-only, lock-in.</td>
+                <td class="num">0 USD/hó · SS-licenszben</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top:10px"><span class="lbl">mire mit használj</span></p>
+          <ul>
+            <li><strong>Karpathy-Wiki</strong> az alap-portfolio · <em>„hol mi van, mit tudunk"</em> kérdésekre. Mindennapi háttér-tudás.</li>
+            <li><strong>NotebookLM</strong> mély-elemzéshez · <em>„olvasd át nekem ezt a 200 oldalas dolgot, és kérdezhessek tőle"</em>. Plusz: <strong>magyar audio-overview</strong> — autóban hallgathatod a saját docx-jeid összefoglalóját. Kifejezetten jó a hétfő reggeli triage-hoz: a hétvégén beérkezett anyagokat magyar audio-podcasttá konvertálod, és reggel séta közben végighallgatod.</li>
+            <li><strong>Claude Memory</strong> a folyamatos chat-hez · <em>„folytassuk, ahol abbahagytuk"</em>. A nehéz fejlesztési feladataidnál (energia-mgmt szerint), ahol több napon át dolgozol egy gondolaton.</li>
+          </ul>
+
+          <p style="margin-top:8px"><span class="lbl">workflow példa</span></p>
+          <ol>
+            <li>Új partner-meeting (1 ó hangrögzítés). NotebookLM-be feltöltöd, kérsz 10 perces magyar audio-összefoglalót.</li>
+            <li>Az audio-átirat exportja a Karpathy-Wiki <code>raw/</code>-jába megy. <code>/second-brain-ingest</code>-tel beépül a tudás-portfolioba (entity-k, projektek).</li>
+            <li>Egy hét múlva, Claude.ai-ben: <em>„a múlt heti partner-meeting kapcsán mit gondolunk a stratégiai irányról?"</em> — a Claude Memory + a vault-od kombinált válasza.</li>
+          </ol>
+
+          <p style="margin-top:8px"><span class="lbl">javaslatom Oli-helyzetre</span> A §3 <strong>A akció (Karpathy-Wiki Windows-install)</strong> az első lépés — mert az lokális, az alapodat fedi le. NotebookLM 1-2 hét múlva, amikor van egy konkrét dokumentum amit be akarsz tölteni (pl. a JYSK-anyag). Claude Memory automatikusan él az SS-licenszedben — csak engedélyezni kell a Claude.ai beállításokban.</p>
+
+          <p style="margin-top:8px"><span class="lbl">amit elvetnék</span> Mindhárom <strong>egyszerre</strong> beletölteni a 9 céged minden adatát. Az LLM-ek 2026-os generációja is hibázik ennyi kontextusnál. <em>Specializálni</em> a megfelelő rétegre.</p>
+
+          <p style="margin-top:8px;font-size:13px;color:var(--text-faint)">Forrás: Anthropic Claude Memory 2026.04.23 public beta · NotebookLM 80+ nyelv audio overview 2025-2026 (HU is) · Karpathy LLM Knowledge Base posting 2026.04.</p>
         </div>
       </details>
 
